@@ -13,6 +13,7 @@ Commands:
 - 'bun run probe'
 - 'bun run qualify:fc27'
 - 'bun run ./src/cli.ts launch <appid>'
+- 'bun run ./src/cli.ts trace <appid>' enables Proton logging for reproduction.
 
 Jev may select one of the read-only actions in 'src/jev-agent.ts'. It cannot
 expand that allowlist or authorize installation, publication, DRM bypass or
