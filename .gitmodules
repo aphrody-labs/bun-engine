@@ -102,6 +102,10 @@
 	path = src/platform/steamcmd
 	url = https://github.com/aphrody-labs/steamcmd.git
 	shallow = true
+[submodule "src/platform/steamcmd-api"]
+	path = src/platform/steamcmd-api
+	url = https://github.com/aphrody-labs/steamcmd-api.git
+	shallow = true
 [submodule "src/drivers/nvidia-open"]
 	path = src/drivers/nvidia-open
 	url = https://github.com/aphrody-labs/open-gpu-kernel-modules.git
