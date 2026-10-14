@@ -1,5 +1,6 @@
 import { fetchFirmwareCatalog } from "./firmware/catalog";
 import { importFirmware } from "./firmware/import";
+import { probeMedia, probeNativeCapabilities } from "./native-capabilities";
 
 const packageManagerCommands = new Set([
   "add",
@@ -27,6 +28,15 @@ export function packageManagerInvocation(args: string[]): string[] {
 }
 
 export async function runEnginePackageManager(args: string[]): Promise<number> {
+  if (args[0] === "system:probe") {
+    console.log(JSON.stringify(await probeNativeCapabilities(args[1]), null, 2));
+    return 0;
+  }
+  if (args[0] === "media:probe") {
+    if (!args[1]) throw new Error("usage: bep media:probe <local-file>");
+    console.log(JSON.stringify(await probeMedia(args[1]), null, 2));
+    return 0;
+  }
   if (args[0] === "firmware:index") {
     console.log(JSON.stringify(await fetchFirmwareCatalog(), null, 2));
     return 0;

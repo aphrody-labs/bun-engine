@@ -65,3 +65,7 @@ bun run bep firmware:import nintendo-ds C:\path\to\your\bios.bin
 ```
 
 Set `BUN_ENGINE_FIRMWARE_STORE` to override the default per-user store. Imports are content-addressed by SHA-256 and accompanied by a JSON manifest; firmware payloads and fixtures are ignored by Git.
+
+### Native capability probes
+
+`bep system:probe [host]` exercises Bun DNS, TCP/TLS, Image, Video, Win32 or Linux kernel APIs and discovers WinGet. `bep media:probe <file>` reads real image/video metadata through `Bun.Image` or `Bun.Video`.
