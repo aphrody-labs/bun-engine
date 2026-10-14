@@ -3,6 +3,8 @@
   "cli": "src/cli.ts",
   "ffi": "include/bun_engine.h",
   "web": "apps/web/index.html",
+  "consolePlugins": "src/plugins/consoles.ts",
+  "formatLoaders": "src/plugins/formats.ts",
   "cargoWorkspace": "Cargo.toml",
   "bunWorkspace": "package.json",
   "cmakeWorkspace": "CMakeLists.txt",

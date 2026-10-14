@@ -24,6 +24,7 @@ startup end to end without disabling required game components.
 Commands:
 
 - 'bun run probe'
+- 'bun run compile' emits the optimized single-file executable.
 - 'bun run qualify:fc27'
 - 'bun run ./src/cli.ts launch <appid>'
 - 'bun run ./src/cli.ts trace <appid>' enables Proton logging for reproduction.

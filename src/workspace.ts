@@ -1,4 +1,5 @@
 import { dirname, join } from "node:path";
+import { consolePlugins, formatPlugins } from "./plugins";
 
 const root = join(import.meta.dir, "..");
 const cargo = join(root, "src", "runtime", "bun", "scripts", "build", "rust", "cargo-serial.ts");
@@ -65,6 +66,7 @@ export async function compileWorkspace(options: CompileWorkspaceOptions = {}): P
     bytecode: true,
     minify: true,
     sourcemap: "linked",
+    plugins: [...consolePlugins, ...formatPlugins],
     define: { BUN_ENGINE_VERSION: JSON.stringify("0.1.0") },
   });
 
