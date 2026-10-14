@@ -9,7 +9,7 @@ describe("console plugin catalog", () => {
   test("validates every local owner and pinned submodule", async () => {
     const catalog = await loadConsoleCatalog();
     expect(await validateConsoleCatalog(catalog)).toEqual([]);
-    expect(catalog.components).toHaveLength(21);
+    expect(catalog.components).toHaveLength(26);
     expect(catalog.kernelIntegration).toBe("unified");
   });
 

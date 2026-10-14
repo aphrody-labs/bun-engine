@@ -13,6 +13,11 @@ licensed source code, not as a firmware image.
 | Owner            | Purpose                                   | License                          | Integration         |
 | ---------------- | ----------------------------------------- | -------------------------------- | ------------------- |
 | devkitPro/libnds | Nintendo DS homebrew C library            | zlib                             | submodule           |
+| devkitPro/calico | Nintendo DS/DSi system and RTOS foundation | ZPL-2.1                         | submodule           |
+| devkitPro/libctru | Nintendo 3DS ARM11/Horizon system library | zlib                            | submodule           |
+| devkitPro/citro3d | Nintendo 3DS PICA200 graphics library     | zlib                            | submodule           |
+| devkitPro/citro2d | Nintendo 3DS 2D graphics library          | zlib                            | submodule           |
+| rust3ds/ctru-rs | Safe Rust libctru bindings and test runner  | zlib                            | root Cargo workspace |
 | devkitPro/libogc | GameCube/Wii homebrew C library           | zlib                             | submodule           |
 | melonDS          | DS/DSi focused HLE core                   | GPL-3.0-only                     | submodule, isolated |
 | ares             | accuracy-oriented multi-system components | ISC plus bundled notices         | submodule, isolated |

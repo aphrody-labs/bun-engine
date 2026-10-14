@@ -163,3 +163,18 @@
 	path = crates/repo-manage-util
 	url = https://github.com/aphrody-labs/repo-manage-util.git
 	branch = develop
+[submodule "crates/calico"]
+	path = crates/calico
+	url = https://github.com/aphrody-labs/calico.git
+[submodule "crates/libctru"]
+	path = crates/libctru
+	url = https://github.com/aphrody-labs/libctru.git
+[submodule "crates/citro3d"]
+	path = crates/citro3d
+	url = https://github.com/aphrody-labs/citro3d.git
+[submodule "crates/citro2d"]
+	path = crates/citro2d
+	url = https://github.com/aphrody-labs/citro2d.git
+[submodule "crates/ctru-rs"]
+	path = crates/ctru-rs
+	url = https://github.com/aphrody-labs/ctru-rs.git
