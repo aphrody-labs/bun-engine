@@ -14,3 +14,7 @@
 
 Physics, animation, audio, networking, scripting, streaming and authoring stay
 independent plugins until measurements justify promotion into the core.
+
+Console runtimes, CPU implementations and free native SDK source trees are
+optional catalog entries described in [CONSOLE-PLUGINS.md](CONSOLE-PLUGINS.md).
+They are never linked into the default kernel merely because they are cataloged.
