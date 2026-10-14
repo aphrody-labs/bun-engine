@@ -55,7 +55,11 @@ export async function compileWorkspace(options: CompileWorkspaceOptions = {}): P
     compile: {
       ...(options.target ? { target: options.target as Bun.Build.Target } : {}),
       outfile,
-      assets: [join(root, "apps", "web"), join(root, "config")],
+      assets: [
+        join(root, "apps", "web"),
+        join(root, "config"),
+        join(root, "src", "skills", "replica"),
+      ],
       execArgv: ["--smol"],
       autoloadTsconfig: false,
       autoloadPackageJson: false,

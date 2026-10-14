@@ -104,3 +104,6 @@
 [submodule "src/ml/magika"]
 	path = src/ml/magika
 	url = https://github.com/aphrody-labs/magika.git
+[submodule "src/skills/replica"]
+	path = src/skills/replica
+	url = https://github.com/Jakeschincariol/replica-skill.git

@@ -19,6 +19,7 @@
     "src/kernel/**",
     "src/ml/magika/**",
     "src/runtime/bun/**",
+    "src/skills/replica/**",
     "toolchains/**"
   ]
 }
