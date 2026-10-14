@@ -12,10 +12,8 @@
       "publicationGate": "deferred-review",
       "integration": "local-plugin",
       "sourceRev": "58fc06ffe480415c847415d187aa295215423226",
-      "buildOwner": "plugins/emulation/Cargo.toml#aphrody-aarch64",
-      "sources": [
-        { "kind": "rust-crate", "path": "plugins/emulation/aphrody-aarch64/Cargo.toml" }
-      ]
+      "buildOwner": "Cargo.toml#aphrody-aarch64",
+      "sources": [{ "kind": "rust-crate", "path": "crates/aphrody-aarch64/Cargo.toml" }]
     },
     {
       "id": "switch-texture",
@@ -27,10 +25,8 @@
       "publicationGate": "deferred-review",
       "integration": "local-plugin",
       "sourceRev": "58fc06ffe480415c847415d187aa295215423226",
-      "buildOwner": "plugins/emulation/Cargo.toml#aphrody-switch",
-      "sources": [
-        { "kind": "rust-crate", "path": "plugins/emulation/aphrody-switch/Cargo.toml" }
-      ]
+      "buildOwner": "Cargo.toml#aphrody-switch",
+      "sources": [{ "kind": "rust-crate", "path": "crates/aphrody-switch/Cargo.toml" }]
     },
     {
       "id": "wii-cpu-runtime",
@@ -42,10 +38,8 @@
       "publicationGate": "deferred-review",
       "integration": "local-plugin",
       "sourceRev": "58fc06ffe480415c847415d187aa295215423226",
-      "buildOwner": "plugins/emulation/Cargo.toml#aphrody-wii",
-      "sources": [
-        { "kind": "rust-crate", "path": "plugins/emulation/aphrody-wii/Cargo.toml" }
-      ]
+      "buildOwner": "Cargo.toml#aphrody-wii",
+      "sources": [{ "kind": "rust-crate", "path": "crates/aphrody-wii/Cargo.toml" }]
     },
     {
       "id": "wii-image-parsers",
@@ -57,10 +51,8 @@
       "publicationGate": "deferred-review",
       "integration": "local-plugin",
       "sourceRev": "58fc06ffe480415c847415d187aa295215423226",
-      "buildOwner": "plugins/emulation/Cargo.toml#aphrody-wii-image",
-      "sources": [
-        { "kind": "rust-crate", "path": "plugins/emulation/aphrody-wii-image/Cargo.toml" }
-      ]
+      "buildOwner": "Cargo.toml#aphrody-wii-image",
+      "sources": [{ "kind": "rust-crate", "path": "crates/aphrody-wii-image/Cargo.toml" }]
     },
     {
       "id": "devkitpro-libnds",
@@ -180,52 +172,108 @@
       "sources": [{ "kind": "c-source-tree", "path": "src/console/vendor/retroarch" }]
     },
     {
-      "id": "tetanes", "console": "nintendo-nes", "cpu": ["mos-6502"],
-      "runtime": "hle-core", "firmwarePolicy": "caller-supplied-only", "license": "MIT-OR-Apache-2.0",
-      "publicationGate": "deferred-review", "integration": "submodule", "sourceRev": "a0a6b17f8ba9c5ee451453fb2409753fd06e5a31",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#tetanes", "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/tetanes" }]
+      "id": "tetanes",
+      "console": "nintendo-nes",
+      "cpu": ["mos-6502"],
+      "runtime": "hle-core",
+      "firmwarePolicy": "caller-supplied-only",
+      "license": "MIT-OR-Apache-2.0",
+      "publicationGate": "deferred-review",
+      "integration": "submodule",
+      "sourceRev": "a0a6b17f8ba9c5ee451453fb2409753fd06e5a31",
+      "buildOwner": "plugins/emulation/rust/CATALOG.md#tetanes",
+      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/tetanes" }]
     },
     {
-      "id": "retroboy", "console": "nintendo-game-boy", "cpu": ["sharp-lr35902"],
-      "runtime": "hle-core", "firmwarePolicy": "caller-supplied-only", "license": "Apache-2.0",
-      "publicationGate": "deferred-review", "integration": "submodule", "sourceRev": "edf90d9fb192372a657a18d44f5c9841805fa554",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#retroboy", "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/retroboy" }]
+      "id": "retroboy",
+      "console": "nintendo-game-boy",
+      "cpu": ["sharp-lr35902"],
+      "runtime": "hle-core",
+      "firmwarePolicy": "caller-supplied-only",
+      "license": "Apache-2.0",
+      "publicationGate": "deferred-review",
+      "integration": "submodule",
+      "sourceRev": "edf90d9fb192372a657a18d44f5c9841805fa554",
+      "buildOwner": "plugins/emulation/rust/CATALOG.md#retroboy",
+      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/retroboy" }]
     },
     {
-      "id": "rustboyadvance-ng", "console": "nintendo-game-boy-advance", "cpu": ["arm7tdmi"],
-      "runtime": "hle-core", "firmwarePolicy": "caller-supplied-only", "license": "MIT",
-      "publicationGate": "deferred-review", "integration": "submodule", "sourceRev": "1d7ff23a6adb42d803ebd393c3d27d94e4fea15e",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#rustboyadvance-ng", "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/rustboyadvance-ng" }]
+      "id": "rustboyadvance-ng",
+      "console": "nintendo-game-boy-advance",
+      "cpu": ["arm7tdmi"],
+      "runtime": "hle-core",
+      "firmwarePolicy": "caller-supplied-only",
+      "license": "MIT",
+      "publicationGate": "deferred-review",
+      "integration": "submodule",
+      "sourceRev": "1d7ff23a6adb42d803ebd393c3d27d94e4fea15e",
+      "buildOwner": "plugins/emulation/rust/CATALOG.md#rustboyadvance-ng",
+      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/rustboyadvance-ng" }]
     },
     {
-      "id": "dust", "console": "nintendo-ds", "cpu": ["arm7", "arm9"],
-      "runtime": "hle-core", "firmwarePolicy": "caller-supplied-only", "license": "GPL-3.0-only",
-      "publicationGate": "deferred-review", "integration": "submodule", "sourceRev": "76d79f25e4ea3ce355c4ac868f5ac9a233e64b89",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#dust", "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/dust" }]
+      "id": "dust",
+      "console": "nintendo-ds",
+      "cpu": ["arm7", "arm9"],
+      "runtime": "hle-core",
+      "firmwarePolicy": "caller-supplied-only",
+      "license": "GPL-3.0-only",
+      "publicationGate": "deferred-review",
+      "integration": "submodule",
+      "sourceRev": "76d79f25e4ea3ce355c4ac868f5ac9a233e64b89",
+      "buildOwner": "plugins/emulation/rust/CATALOG.md#dust",
+      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/dust" }]
     },
     {
-      "id": "gopher64", "console": "nintendo-64", "cpu": ["mips-r4300i"],
-      "runtime": "hle-core", "firmwarePolicy": "caller-supplied-only", "license": "GPL-3.0-only",
-      "publicationGate": "deferred-review", "integration": "submodule", "sourceRev": "9b312ea60d1db87e85964c2a4c6fe5dae1540609",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#gopher64", "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/gopher64" }]
+      "id": "gopher64",
+      "console": "nintendo-64",
+      "cpu": ["mips-r4300i"],
+      "runtime": "hle-core",
+      "firmwarePolicy": "caller-supplied-only",
+      "license": "GPL-3.0-only",
+      "publicationGate": "deferred-review",
+      "integration": "submodule",
+      "sourceRev": "9b312ea60d1db87e85964c2a4c6fe5dae1540609",
+      "buildOwner": "plugins/emulation/rust/CATALOG.md#gopher64",
+      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/gopher64" }]
     },
     {
-      "id": "jgenesis", "console": "multi-system", "cpu": ["multi-architecture"],
-      "runtime": "hle-core", "firmwarePolicy": "caller-supplied-only", "license": "GPL-3.0-only",
-      "publicationGate": "deferred-review", "integration": "submodule", "sourceRev": "9fcfd9c9495ae6a65c3a9354599665d3bf62a047",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#jgenesis", "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/jgenesis" }]
+      "id": "jgenesis",
+      "console": "multi-system",
+      "cpu": ["multi-architecture"],
+      "runtime": "hle-core",
+      "firmwarePolicy": "caller-supplied-only",
+      "license": "GPL-3.0-only",
+      "publicationGate": "deferred-review",
+      "integration": "submodule",
+      "sourceRev": "9fcfd9c9495ae6a65c3a9354599665d3bf62a047",
+      "buildOwner": "plugins/emulation/rust/CATALOG.md#jgenesis",
+      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/jgenesis" }]
     },
     {
-      "id": "starpsx", "console": "sony-playstation", "cpu": ["mips-r3000a"],
-      "runtime": "hle-core", "firmwarePolicy": "caller-supplied-only", "license": "GPL-3.0-only",
-      "publicationGate": "deferred-review", "integration": "submodule", "sourceRev": "e8551eedac6d15a4ed7b7fb123c70f97217d1ed4",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#starpsx", "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/starpsx" }]
+      "id": "starpsx",
+      "console": "sony-playstation",
+      "cpu": ["mips-r3000a"],
+      "runtime": "hle-core",
+      "firmwarePolicy": "caller-supplied-only",
+      "license": "GPL-3.0-only",
+      "publicationGate": "deferred-review",
+      "integration": "submodule",
+      "sourceRev": "e8551eedac6d15a4ed7b7fb123c70f97217d1ed4",
+      "buildOwner": "plugins/emulation/rust/CATALOG.md#starpsx",
+      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/starpsx" }]
     },
     {
-      "id": "zakuro", "console": "nintendo-3ds", "cpu": ["arm11", "arm9"],
-      "runtime": "hle-core", "firmwarePolicy": "caller-supplied-only", "license": "MIT",
-      "publicationGate": "deferred-review", "integration": "submodule", "sourceRev": "0ce36eeb64adf8969c5d94bc907ccb68b9e73f35",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#zakuro", "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/zakuro" }]
+      "id": "zakuro",
+      "console": "nintendo-3ds",
+      "cpu": ["arm11", "arm9"],
+      "runtime": "hle-core",
+      "firmwarePolicy": "caller-supplied-only",
+      "license": "MIT",
+      "publicationGate": "deferred-review",
+      "integration": "submodule",
+      "sourceRev": "0ce36eeb64adf8969c5d94bc907ccb68b9e73f35",
+      "buildOwner": "plugins/emulation/rust/CATALOG.md#zakuro",
+      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/zakuro" }]
     }
   ]
 }

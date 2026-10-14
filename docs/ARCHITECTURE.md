@@ -1,9 +1,9 @@
 # Architecture
 
-1. Kernel: time, lifecycle, plugin ownership and deterministic scheduling.
-2. World: Bevy ECS behind the 'ecs' feature.
-3. Render: wgpu graph, shaders and resource lifetimes behind 'render'.
-4. Platform: winit windows, input, displays and event loop.
+1. Kernel: `crates/bun-engine-core`; time, lifecycle, one C ABI and deterministic scheduling.
+2. World: the pinned `crates/bevy` source behind the `ecs` feature.
+3. Render: pinned `crates/wgpu` with DX12, static DXC, WGSL, SPIR-V and GLSL behind `render`.
+4. Platform: pinned `crates/winit` windows, input, displays and event loop.
 5. Editor: separate binary using the same public contracts.
 6. Tooling: Bun asset graph, packaging, hot reload and compatibility services.
 7. Binary ingestion: the dependency-free kernel identifies bounded PE, ELF, Wasm,
@@ -14,6 +14,12 @@
 
 Physics, animation, audio, networking, scripting, streaming and authoring stay
 independent plugins until measurements justify promotion into the core.
+
+The repository has one root Cargo workspace, one Bun package workspace, one
+CMake project and one vcpkg manifest. `src/runtime/bun` owns Bun, Buv, PyJS,
+Python, CUDA bindings and the shared runtime FFI. Linux/NVIDIA/CUDA/DirectX
+sources are pinned under `src/`; LLVM, QEMU, CMake, vcpkg and Make are pinned
+under `toolchains/`. These source owners are not built into the default kernel.
 
 Console runtimes, CPU implementations and free native SDK source trees are
 optional catalog entries described in [CONSOLE-PLUGINS.md](CONSOLE-PLUGINS.md).

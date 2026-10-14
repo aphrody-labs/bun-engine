@@ -2,20 +2,32 @@
   "name": "@aphrody/bun-engine",
   "version": "0.1.0",
   "private": false,
+  "license": "MIT",
+  "bin": {
+    "bun-engine": "./src/cli.ts"
+  },
   "type": "module",
-  "bin": { "bun-engine": "./src/cli.ts" },
   "scripts": {
+    "build": "bun run ./src/cli.ts build",
+    "compile": "bun run ./src/cli.ts compile",
     "check": "bun check --noEmit",
     "test": "bun test ./test",
+    "workspace:test": "bun run ./src/cli.ts test",
+    "web": "bun run ./src/cli.ts web",
     "probe": "bun run ./src/cli.ts probe",
     "qualify:fc27": "bun run ./src/cli.ts qualify 4080220",
     "android:test": "bun test ./plugins/android/packages/android-pipeline/tests",
     "console:manifest": "bun test ./test/console-catalog.test.ts",
-    "native:test": "bun C:/bun/scripts/build/rust/cargo-serial.ts --msvc test --manifest-path ./native/Cargo.toml",
+    "native:test": "bun ./src/runtime/bun/scripts/build/rust/cargo-serial.ts --msvc test --workspace",
     "console:validate": "bun run ./src/console/validate.ts"
   },
-  "dependencies": { "@typesafe-ai/sdk": "0.6.0" },
-  "devDependencies": { "@types/bun": "1.3.4" },
-  "engines": { "bun": ">=1.4.4" },
-  "license": "MIT"
+  "dependencies": {
+    "@typesafe-ai/sdk": "0.6.0"
+  },
+  "devDependencies": {
+    "@types/bun": "1.3.4"
+  },
+  "engines": {
+    "bun": ">=1.4.4"
+  }
 }

@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "cli": "src/cli.ts",
+  "ffi": "include/bun_engine.h",
+  "web": "apps/web/index.html",
+  "cargoWorkspace": "Cargo.toml",
+  "bunWorkspace": "package.json",
+  "cmakeWorkspace": "CMakeLists.txt",
+  "vcpkgManifest": "vcpkg.json",
+  "owners": {
+    "runtime": "src/runtime/bun",
+    "linux": "src/kernel/linux",
+    "nvidia": "src/drivers/nvidia-open",
+    "cuda": ["src/gpu/cuda/cccl", "src/gpu/cuda/samples"],
+    "directx12": ["src/gpu/directx/headers", "src/gpu/directx/compiler", "src/gpu/directx/samples"],
+    "render": ["crates/wgpu", "crates/bevy", "crates/winit"],
+    "toolchains": [
+      "toolchains/llvm",
+      "toolchains/qemu",
+      "toolchains/cmake",
+      "toolchains/vcpkg",
+      "toolchains/make"
+    ]
+  }
+}

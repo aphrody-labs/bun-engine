@@ -52,3 +52,52 @@
 [submodule "plugins/emulation/rust/zakuro"]
 	path = plugins/emulation/rust/zakuro
 	url = https://github.com/aphrody-labs/zakuro.git
+[submodule "crates/bevy"]
+	path = crates/bevy
+	url = https://github.com/aphrody-labs/bevy.git
+[submodule "crates/wgpu"]
+	path = crates/wgpu
+	url = https://github.com/aphrody-labs/wgpu.git
+[submodule "crates/winit"]
+	path = crates/winit
+	url = https://github.com/aphrody-labs/winit.git
+[submodule "src/kernel/linux"]
+	path = src/kernel/linux
+	url = https://github.com/aphrody-labs/linux.git
+	ignore = dirty
+[submodule "src/drivers/nvidia-open"]
+	path = src/drivers/nvidia-open
+	url = https://github.com/NVIDIA/open-gpu-kernel-modules.git
+[submodule "src/gpu/cuda/cccl"]
+	path = src/gpu/cuda/cccl
+	url = https://github.com/NVIDIA/cccl.git
+[submodule "src/gpu/cuda/samples"]
+	path = src/gpu/cuda/samples
+	url = https://github.com/NVIDIA/cuda-samples.git
+[submodule "src/gpu/directx/headers"]
+	path = src/gpu/directx/headers
+	url = https://github.com/microsoft/DirectX-Headers.git
+[submodule "src/gpu/directx/compiler"]
+	path = src/gpu/directx/compiler
+	url = https://github.com/microsoft/DirectXShaderCompiler.git
+[submodule "src/gpu/directx/samples"]
+	path = src/gpu/directx/samples
+	url = https://github.com/microsoft/DirectX-Graphics-Samples.git
+[submodule "src/runtime/bun"]
+	path = src/runtime/bun
+	url = https://github.com/aphrody-labs/bun.git
+[submodule "toolchains/vcpkg"]
+	path = toolchains/vcpkg
+	url = https://github.com/microsoft/vcpkg.git
+[submodule "toolchains/cmake"]
+	path = toolchains/cmake
+	url = https://github.com/Kitware/CMake.git
+[submodule "toolchains/llvm"]
+	path = toolchains/llvm
+	url = https://github.com/llvm/llvm-project.git
+[submodule "toolchains/qemu"]
+	path = toolchains/qemu
+	url = https://gitlab.com/qemu-project/qemu.git
+[submodule "toolchains/make"]
+	path = toolchains/make
+	url = https://github.com/mirror/make.git

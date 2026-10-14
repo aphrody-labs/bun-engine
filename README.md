@@ -9,6 +9,10 @@ VFS images and firmware, then selects native rebuild, translation, emulation,
 compatibility or packaging. Targets are PE, ELF, WebAssembly/WASI and Android
 APK through optional owners; see `docs/UNIVERSAL-PORTING.md`.
 
+The root manifests are canonical: `Cargo.toml`, `package.json`, `CMakeLists.txt`
+and `vcpkg.json`. `bun-engine` is the only CLI; `include/bun_engine.h` is the
+only stable native FFI and `apps/web` is the single web entry point.
+
 The first vertical slice includes Steam/Linux qualification through the local
 Proton, Wine, DXVK, vkd3d-proton, gamescope and Linux source forks. It probes
 Steam, Vulkan, kernel and user namespaces and records per-game support.

@@ -1,0 +1,34 @@
+[workspace]
+resolver = "3"
+members = [
+  "crates/bun-engine-core",
+  "crates/aphrody-aarch64",
+  "crates/aphrody-switch",
+  "crates/aphrody-wii",
+  "crates/aphrody-wii-image",
+]
+exclude = ["crates/bevy", "crates/wgpu", "crates/winit", "plugins/emulation/rust/*"]
+default-members = ["crates/bun-engine-core"]
+
+[workspace.package]
+edition = "2024"
+repository = "https://github.com/aphrody-labs/bun-engine"
+
+[workspace.lints.rust]
+unsafe_code = "warn"
+unsafe_op_in_unsafe_fn = "deny"
+
+[workspace.dependencies]
+bevy_app = { path = "crates/bevy/crates/bevy_app" }
+bevy_ecs = { path = "crates/bevy/crates/bevy_ecs" }
+wgpu = { path = "crates/wgpu/wgpu", default-features = false, features = [
+  "dx12",
+  "static-dxc",
+  "wgsl",
+  "spirv",
+  "glsl",
+] }
+winit = { path = "crates/winit/winit", default-features = false }
+tracing = "0.1"
+zerocopy = "0.8"
+zip = { version = "2", default-features = false, features = ["deflate"] }

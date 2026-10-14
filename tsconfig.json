@@ -9,6 +9,15 @@
     "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "test/**/*.ts"],
-  "exclude": ["src/console/vendor/**"]
+  "include": ["src/**/*.ts", "test/**/*.ts", "types/**/*.d.ts"],
+  "exclude": [
+    "crates/**",
+    "plugins/emulation/rust/**",
+    "src/console/vendor/**",
+    "src/drivers/**",
+    "src/gpu/**",
+    "src/kernel/**",
+    "src/runtime/bun/**",
+    "toolchains/**"
+  ]
 }
