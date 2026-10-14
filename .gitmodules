@@ -1,0 +1,3 @@
+[submodule "plugins/android"]
+	path = plugins/android
+	url = https://github.com/aphrody-labs/bun-engine-android.git

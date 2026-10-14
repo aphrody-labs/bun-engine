@@ -9,6 +9,7 @@
     "test": "bun test ./test",
     "probe": "bun run ./src/cli.ts probe",
     "qualify:fc27": "bun run ./src/cli.ts qualify 4080220",
+    "android:test": "bun test ./plugins/android/packages/android-pipeline/tests",
     "native:test": "bun C:/bun/scripts/build/rust/cargo-serial.ts --msvc test --manifest-path ./native/Cargo.toml"
   },
   "dependencies": { "@typesafe-ai/sdk": "0.6.0" },
