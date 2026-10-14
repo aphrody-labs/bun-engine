@@ -3,7 +3,21 @@ import { probeHost } from "./probe";
 
 const ACTIONS = {
   probe_host: async () => probeHost(),
-  inspect_sources: async () => ({ sources: ["wine", "linux", "msys2-runtime", "powershell", "git", "bash"] }),
+  inspect_sources: async () => ({
+    sources: [
+      "wine",
+      "proton",
+      "steam-runtime",
+      "dxvk",
+      "vkd3d-proton",
+      "gamescope",
+      "linux",
+      "msys2-runtime",
+      "powershell",
+      "git",
+      "bash"
+    ]
+  }),
   none: async () => ({ skipped: true })
 } as const;
 
