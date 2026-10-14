@@ -1,14 +1,15 @@
 {
-  "name": "@aphrody/steam-linux-compat",
+  "name": "@aphrody/bun-engine",
   "version": "0.1.0",
   "private": false,
   "type": "module",
-  "bin": { "steam-linux-compat": "./src/cli.ts" },
+  "bin": { "bun-engine": "./src/cli.ts" },
   "scripts": {
     "check": "bun check --noEmit",
     "test": "bun test ./test",
     "probe": "bun run ./src/cli.ts probe",
-    "qualify:fc27": "bun run ./src/cli.ts qualify 4080220"
+    "qualify:fc27": "bun run ./src/cli.ts qualify 4080220",
+    "native:test": "bun C:/bun/scripts/build/rust/cargo-serial.ts --msvc test --manifest-path ./native/Cargo.toml"
   },
   "dependencies": { "@typesafe-ai/sdk": "0.6.0" },
   "devDependencies": { "@types/bun": "1.3.4" },

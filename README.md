@@ -1,8 +1,12 @@
-# Steam Linux Compatibility Lab
+# Bun Engine
 
-Bun-native qualification and launch policy for legitimate Steam games on
-Linux through vendor-supported Proton/Wine paths. It probes Steam, Vulkan,
-kernel and user namespaces, and records per-game support.
+A Rust-first, Bun-operated cross-OS game engine. The native kernel stays small;
+Bevy ECS, wgpu rendering and winit platform integration are opt-in. Bun owns
+asset tooling, automation, packaging and compatibility orchestration.
+
+The first vertical slice includes Steam/Linux qualification through the local
+Proton, Wine, DXVK, vkd3d-proton, gamescope and Linux source forks. It probes
+Steam, Vulkan, kernel and user namespaces and records per-game support.
 
 EA SPORTS FC 27 is currently recorded as experimental. The project qualifies
 its Windows publisher services, DirectX 12 path, Steam session and multiplayer
