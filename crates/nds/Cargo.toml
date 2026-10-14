@@ -9,5 +9,9 @@ repository = "https://github.com/aphrody-labs/bun-engine"
 [lib]
 path = "src/lib.rs"
 
+[dependencies]
+aphrody-dust-core = { path = "dust-core", features = ["nds-complete"] }
+serde_json = "1"
+
 [lints]
 workspace = true

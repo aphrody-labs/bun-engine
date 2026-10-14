@@ -9,7 +9,7 @@
 
 ## Remaining gates
 
-- Replace the obsolete Dust tree with the modern IECODE Dust core; the old build fails on removed portable-SIMD APIs and `proc-bitfield` nightly const-Try.
+- The modern IECODE Dust core, utilities and proc-macros are absorbed under `crates/nds`; its unified Rust CLI validates `testt.nds`. Rendering/execution frontends remain to migrate.
 - JDK 25 is installed and auto-discovered. Ghidra dependencies bootstrap successfully, but the 12.3 DEV build currently omits the `:Doclets` Gradle project during configuration; NTRGhidra also targets at most Ghidra 12.0.4.
 - Install devkitPro/libnds tools before building homebrew fixtures.
 - A playable Windows/Web replica still requires observed screens, interaction traces, rendering, audio and parity tests.

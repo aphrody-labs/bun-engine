@@ -14,6 +14,7 @@ import { listReplicaSkills, readReplicaSkill } from "./core/replica";
 import { initializeReplicaInput } from "./core/replica-input";
 import { launch, trace } from "./launcher";
 import { identifyWithMagika, setupMagika } from "./ml/magika";
+import { runNdsCli } from "./nds/cli";
 import { inspectNdsReplica } from "./pipeline/nds-replica";
 import { replicaPipeline } from "./pipeline/replica";
 import { reverseEngineeringPipeline } from "./pipeline/reverse";
@@ -72,6 +73,12 @@ async function main(): Promise<void> {
         2,
       ),
     );
+  else if (command === "nds:info" && appId)
+    process.exitCode = await runNdsCli([
+      "info",
+      appId,
+      ...(target ? [target] : []),
+    ]);
   else if (command === "ghidra:probe")
     console.log(JSON.stringify(await probeGhidraWindows(), null, 2));
   else if (command === "ghidra:inspect" && appId)
@@ -116,7 +123,7 @@ async function main(): Promise<void> {
     );
   } else {
     throw new Error(
-      "usage: bun-engine build [--release] | compile [bun-<os>-<arch>] [outfile] [bytecode-order] | test | web | probe | skills | references | skill <replica-name> | pipeline <replica|reverse> | replica:nds <rom.nds> | replica:init <rom.nds> [output] | ghidra:probe | ghidra:inspect <pe> | ghidra:build | ml:setup | ml:identify <path> | qualify <appid> | launch <appid> | trace <appid> | android:inspect <path> [pe|elf|wasm] [--sources]",
+      "usage: bun-engine build [--release] | compile [bun-<os>-<arch>] [outfile] [bytecode-order] | test | web | probe | skills | references | skill <replica-name> | pipeline <replica|reverse> | replica:nds <rom.nds> | replica:init <rom.nds> [output] | nds:info <rom.nds> [--json] | ghidra:probe | ghidra:inspect <pe> | ghidra:build | ml:setup | ml:identify <path> | qualify <appid> | launch <appid> | trace <appid> | android:inspect <path> [pe|elf|wasm] [--sources]",
     );
   }
 }

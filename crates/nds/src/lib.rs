@@ -8,6 +8,8 @@
 
 use core::{fmt, str};
 
+pub use aphrody_dust_core as dust;
+
 pub const HEADER_LEN: usize = 0x200;
 const LOGO_OFFSET: usize = 0xc0;
 const LOGO_PREFIX: &[u8] = b"\x24\xff\xae\x51\x69\x9a\xa2\x21\x3d\x84\x82\x0a";

@@ -1,0 +1,22 @@
+[package]
+name = "aphrody-emu-utils"
+version = "0.0.1"
+edition = "2021"
+license = "GPL-3.0-or-later"
+publish = false
+
+[features]
+default = []
+triple-buffer = []
+app = ["dep:cocoa", "dep:objc"]
+
+[dependencies]
+cfg-if = "1"
+aphrody-emu-utils-macros = { path = "../emu-utils-macros" }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+cocoa = { version = "0.25", optional = true }
+objc = { version = "0.2", optional = true }
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(app_bundle)'] }

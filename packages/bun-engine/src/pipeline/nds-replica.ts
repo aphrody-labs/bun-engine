@@ -71,7 +71,7 @@ export async function inspectNdsReplica(
     throw new TypeError(`Nintendo DS logo signature is missing: ${path}`);
   }
 
-  const dust = join(root, "crates", "dust");
+  const dust = join(root, "crates", "nds", "dust-core");
   const ghidra = join(root, "crates", "ghidra");
   const ntr = join(root, "crates", "ntr-ghidra");
   const libnds = join(root, "crates", "libnds");
@@ -99,7 +99,7 @@ export async function inspectNdsReplica(
     owners: {
       dust: {
         source: dust,
-        sourceReady: await Bun.file(join(dust, "core", "Cargo.toml")).exists(),
+        sourceReady: await Bun.file(join(dust, "Cargo.toml")).exists(),
         executableReady: await Bun.file(
           join(root, "build", "nds", "dust-cli.exe"),
         ).exists(),
