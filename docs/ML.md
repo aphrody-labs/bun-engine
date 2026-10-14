@@ -1,6 +1,6 @@
 # Machine learning
 
-Magika is the optional file-type classifier for Bun Engine. Its source is pinned at `src/ml/magika`; its Rust/PyO3 core and bundled model remain owned by that fork and are excluded from the default Cargo workspace.
+Magika is the unified file-type classifier for Bun Engine. Its source is pinned at `src/ml/magika`; its Rust/PyO3 core and bundled model remain owned by that fork and build in its isolated Python environment.
 
 ```powershell
 bun run ml:setup

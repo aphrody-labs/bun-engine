@@ -3,25 +3,18 @@ name = "bun-engine"
 version = "0.1.0"
 edition = "2024"
 license = "MIT OR Apache-2.0"
-description = "Minimal modular Rust game-engine kernel with opt-in Bevy, wgpu and winit layers"
+description = "Unified Rust game-engine kernel with Bevy, wgpu and winit"
 repository = "https://github.com/aphrody-labs/bun-engine"
 
 [lib]
 crate-type = ["rlib", "cdylib", "staticlib"]
 
-[features]
-default = []
-ecs = ["dep:bevy_app", "dep:bevy_ecs"]
-render = ["dep:wgpu", "dep:winit"]
-editor = ["ecs", "render"]
-
 [dependencies]
-bevy_app = { workspace = true, optional = true }
-bevy_ecs = { workspace = true, optional = true }
-wgpu = { workspace = true, optional = true }
-winit = { workspace = true, optional = true }
+bevy_app.workspace = true
+bevy_ecs.workspace = true
+wgpu.workspace = true
+winit.workspace = true
 
 [[bin]]
 name = "bun-engine-editor"
 path = "src/bin/editor.rs"
-required-features = ["editor"]

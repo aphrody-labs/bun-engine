@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "kernelIntegration": "optional-only",
+  "kernelIntegration": "unified",
   "components": [
     {
       "id": "switch-aarch64",

@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "distribution": "unified",
   "cli": "src/cli.ts",
   "packageManager": "src/bep.ts",
   "ffi": "include/bun_engine.h",

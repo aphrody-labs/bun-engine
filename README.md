@@ -1,13 +1,13 @@
 # Bun Engine
 
-A Rust-first, Bun-operated cross-OS game engine. The native kernel stays small;
-Bevy ECS, wgpu rendering and winit platform integration are opt-in. Bun owns
+A Rust-first, Bun-operated cross-OS game engine. Bevy ECS, wgpu rendering,
+winit platform integration and every declared owner form one distribution. Bun owns
 asset tooling, automation, packaging and compatibility orchestration.
 
 Its universal porting pipeline classifies executables, bytecode, ROMs, archives,
 VFS images and firmware, then selects native rebuild, translation, emulation,
 compatibility or packaging. Targets are PE, ELF, WebAssembly/WASI and Android
-APK through optional owners; see `docs/UNIVERSAL-PORTING.md`.
+APK through unified owners; see `docs/UNIVERSAL-PORTING.md`.
 
 The root manifests are canonical: `Cargo.toml`, `package.json`, `CMakeLists.txt`
 and `vcpkg.json`. `bun-engine` is the only CLI; `include/bun_engine.h` is the
@@ -25,7 +25,7 @@ Commands:
 
 - 'bun run probe'
 - 'bun run compile' emits the optimized single-file executable.
-- 'bun run ml:setup' and 'bun run ml:identify -- <path>' enable optional Magika classification.
+- 'bun run ml:setup' and 'bun run ml:identify -- <path>' provision and use Magika classification.
 - 'bep install', 'bep add' and 'bep pm' expose Bun Engine Packages.
 - 'bun run qualify:fc27'
 - 'bun run ./src/cli.ts launch <appid>'

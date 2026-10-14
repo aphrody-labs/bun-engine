@@ -1,7 +1,7 @@
 # GPU ownership
 
 `crates/wgpu` is the central portable graphics implementation. Bun Engine enables
-its D3D12 backend, static DXC, WGSL, SPIR-V and GLSL inputs for the optional
+its D3D12 backend, static DXC, WGSL, SPIR-V and GLSL inputs for the unified
 `render` feature. `crates/bevy` consumes that owner; it does not carry another
 wgpu copy. `crates/winit` owns the platform window/event boundary.
 

@@ -27,7 +27,7 @@ function consolePlugin(console: ConsoleId): BunPlugin {
         namespace,
       }));
       build.onLoad({ filter: /.*/, namespace }, () => ({
-        exports: { console, optional: true },
+        exports: { console, integrated: true },
         loader: "object",
       }));
     },

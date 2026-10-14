@@ -8,7 +8,7 @@ The following packages were extracted from `aphrody-labs/iecode` commit
 | `aphrody-aarch64`   | GPL-3.0-or-later | Portable AArch64 decoder and bounded interpreter extracted from Rydynarmic/Ruzu work. |
 | `aphrody-switch`    | GPL-2.0-or-later | Portable Switch CPU and Tegra texture primitives.                                     |
 | `aphrody-wii`       | GPL-3.0-only     | Portable Wii DOL loading and Broadway branch execution.                               |
-| `aphrody-wii-image` | GPL-3.0-only     | Wii/GameCube ISO, DOL, DVD and optional banner parsers.                               |
+| `aphrody-wii-image` | GPL-3.0-only     | Wii/GameCube ISO, DOL, DVD and banner parsers.                                        |
 
 The complete applicable GPL text is retained in each package. No Nintendo ROM,
 BIOS, firmware, key, game data, or IECODE NIE/IEVR implementation is included.

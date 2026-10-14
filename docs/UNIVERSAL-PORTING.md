@@ -5,7 +5,7 @@ Bun Engine treats porting as a typed pipeline, not as a file-extension rename:
 1. **Inspect** bounded headers and manifests without executing the input.
 2. **Model** CPU, ABI, operating-system APIs, graphics, assets, VFS and firmware needs.
 3. **Select** one execution strategy: native rebuild, translation, emulation, compatibility layer or packaging.
-4. **Lower** through an optional owner plugin.
+4. **Lower** through the registered owner plugin.
 5. **Package** as PE (`.exe`), ELF, WebAssembly/WASI or Android APK.
 6. **Qualify** behavior against deterministic fixtures and target hardware.
 
@@ -18,10 +18,10 @@ that the payload can already be decoded, rebuilt or executed.
 - Bun owns orchestration, streams, globs, packaging, `bun:ffi`, JavaScript/TypeScript parsing and the LSP.
 - Rust owns the portable engine kernel, binary model and emulator plugins.
 - `bun msvc`, LLVM/Clang and platform SDKs own native code generation.
-- JSC owns WebAssembly execution; WASI and container lowering remain optional plugins.
-- `bun:dotnet` owns managed hosting. JNI/Ghidra integration remains an optional out-of-process analysis plugin.
-- Bevy ECS, wgpu and winit remain opt-in and pinned to the Aphrody forks.
-- Console emulators are GPL plugins, isolated from the MIT/Apache kernel.
+- JSC owns WebAssembly execution; registered plugins own WASI and container lowering.
+- `bun:dotnet` owns managed hosting. JNI/Ghidra uses the unified out-of-process analysis owner.
+- Bevy ECS, wgpu and winit are required and pinned to the Aphrody forks.
+- Console emulators are unified GPL owners with isolated linkage boundaries.
 
 ## Non-goals
 
@@ -29,4 +29,3 @@ that the payload can already be decoded, rebuilt or executed.
 - No redistribution of ROMs, keys, BIOS, firmware or proprietary game data.
 - No claim that an arbitrary opaque binary can be converted faithfully without its runtime,
   an emulator/translator, or rebuildable source and assets.
-

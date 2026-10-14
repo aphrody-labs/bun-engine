@@ -2,8 +2,9 @@
 
 Use Rust for native engine logic and Bun for tooling. `Cargo.toml` and
 `package.json` at the repository root are the only Cargo and Bun workspaces.
-Keep the default kernel dependency-free. New subsystems are opt-in features or
-separate binaries. Bevy, wgpu and winit are pinned source owners under `crates/`.
+The distribution is unified: every declared subsystem is required and managed
+through the canonical workspace. Heavy owners may load lazily, while remaining
+mandatory product surfaces. Bevy, wgpu and winit are pinned under `crates/`.
 
 Run Cargo through `src/runtime/bun/scripts/build/rust/cargo-serial.ts --msvc`
 on this Windows workstation. Resolve every tool from this workspace or explicit

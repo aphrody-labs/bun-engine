@@ -31,7 +31,7 @@ export interface ConsoleCatalogComponent {
 }
 export interface ConsoleCatalog {
   schemaVersion: 1;
-  kernelIntegration: "optional-only";
+  kernelIntegration: "unified";
   components: ConsoleCatalogComponent[];
 }
 
@@ -66,8 +66,7 @@ export async function validateConsoleCatalog(
 ): Promise<string[]> {
   const errors: string[] = [];
   if (catalog.schemaVersion !== 1) errors.push("schemaVersion must be 1");
-  if (catalog.kernelIntegration !== "optional-only")
-    errors.push("kernelIntegration must be optional-only");
+  if (catalog.kernelIntegration !== "unified") errors.push("kernelIntegration must be unified");
   if (!Array.isArray(catalog.components) || catalog.components.length === 0) {
     errors.push("components must be a non-empty array");
     return errors;

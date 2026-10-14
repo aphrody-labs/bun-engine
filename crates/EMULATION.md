@@ -1,6 +1,6 @@
 # Bun Engine emulation plugins
 
-This workspace contains optional GPL emulation components. It is intentionally
+This workspace contains unified GPL emulation components. It is intentionally
 separate from the dependency-free Bun Engine kernel and is not linked by its
 default build.
 
