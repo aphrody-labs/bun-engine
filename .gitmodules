@@ -63,8 +63,23 @@
 	url = https://github.com/aphrody-labs/winit.git
 [submodule "src/kernel/linux"]
 	path = src/kernel/linux
-	url = https://github.com/aphrody-labs/linux.git
+	url = https://github.com/aphrody-labs/linux-cachyos.git
 	ignore = dirty
+	shallow = true
+[submodule "src/kernel/patches"]
+	path = src/kernel/patches
+	url = https://github.com/aphrody-labs/kernel-patches.git
+	shallow = true
+[submodule "src/compat/proton"]
+	path = src/compat/proton
+	url = https://github.com/aphrody-labs/proton-cachyos.git
+	branch = cachyos_main
+	shallow = true
+[submodule "src/compat/wine"]
+	path = src/compat/wine
+	url = https://github.com/aphrody-labs/wine-cachyos.git
+	branch = proton_9.0
+	shallow = true
 [submodule "src/drivers/nvidia-open"]
 	path = src/drivers/nvidia-open
 	url = https://github.com/NVIDIA/open-gpu-kernel-modules.git

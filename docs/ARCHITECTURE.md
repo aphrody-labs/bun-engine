@@ -16,6 +16,9 @@
    NTRGhidra sources own full analysis and Nintendo loaders. The private
    `aphrody-code/ghidra-suite-plugin` owns Codex/GUI/MCP/headless orchestration. See
    [GHIDRA-PLUGIN-SUITE.md](GHIDRA-PLUGIN-SUITE.md).
+9. Linux gaming: `src/kernel/linux` and `src/kernel/patches` own the CachyOS
+   kernel layer; `src/compat/proton` and `src/compat/wine` own the Steam Play and
+   Win32 compatibility layer. See [CACHYOS-SUITE.md](CACHYOS-SUITE.md).
 
 Physics, animation, audio, networking, scripting, streaming and authoring share
 the same distribution contract and may load lazily through their owners.

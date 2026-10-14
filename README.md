@@ -18,9 +18,10 @@ The root manifests are canonical: `Cargo.toml`, `package.json`, `CMakeLists.txt`
 and `vcpkg.json`. `bun-engine` is the only CLI; `include/bun_engine.h` is the
 only stable native FFI and `apps/web` is the single web entry point.
 
-The first vertical slice includes Steam/Linux qualification through the local
-Proton, Wine, DXVK, vkd3d-proton, gamescope and Linux source forks. It probes
-Steam, Vulkan, kernel and user namespaces and records per-game support.
+The first vertical slice uses the pinned CachyOS suite: `linux-cachyos`, its
+kernel patch set, `proton-cachyos` and `wine-cachyos`. Proton owns Steam Play,
+DXVK and vkd3d-proton composition; the launcher probes Steam, Vulkan, kernel and
+user namespaces and records per-game support. See `docs/CACHYOS-SUITE.md`.
 
 EA SPORTS FC 27 is currently recorded as experimental. The project qualifies
 its Windows publisher services, DirectX 12 path, Steam session and multiplayer

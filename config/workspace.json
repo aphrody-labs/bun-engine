@@ -17,7 +17,8 @@
   "vcpkgManifest": "vcpkg.json",
   "owners": {
     "runtime": "src/runtime/bun",
-    "linux": "src/kernel/linux",
+    "linux": ["src/kernel/linux", "src/kernel/patches"],
+    "windowsCompatibility": ["src/compat/proton", "src/compat/wine"],
     "nvidia": "src/drivers/nvidia-open",
     "cuda": ["src/gpu/cuda/cccl", "src/gpu/cuda/samples"],
     "directx12": ["src/gpu/directx/headers", "src/gpu/directx/compiler", "src/gpu/directx/samples"],
