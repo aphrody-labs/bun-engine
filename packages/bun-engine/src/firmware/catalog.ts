@@ -4,48 +4,120 @@ const maxCatalogBytes = 2 * 1024 * 1024;
 export interface FirmwareCatalogEntry {
   name: string;
   page: string;
+  downloads?: number;
+  updatedAt?: string;
+  fileName?: string;
+  fileSize?: string;
+}
+
+interface TableRow {
+  cells: string[];
+  href?: string;
+}
+
+async function parseTableRows(html: string, base: string): Promise<TableRow[]> {
+  const rows: TableRow[] = [];
+  let row: TableRow | undefined;
+  let cell = -1;
+  const rewriter = new HTMLRewriter()
+    .on("tr", {
+      element(element) {
+        row = { cells: [] };
+        cell = -1;
+        element.onEndTag(() => {
+          if (row) rows.push(row);
+          row = undefined;
+          cell = -1;
+        });
+      },
+    })
+    .on("tr td", {
+      element() {
+        if (row) row.cells[++cell] = "";
+      },
+      text(text) {
+        if (row && cell >= 0) row.cells[cell] += text.text;
+      },
+    })
+    .on("tr td a[href]", {
+      element(element) {
+        if (!row) return;
+        const url = new URL(element.getAttribute("href") ?? "", base);
+        if (url.origin === new URL(base).origin) row.href = url.href;
+      },
+    });
+  await rewriter.transform(new Response(html)).text();
+  return rows.map((item) => ({
+    ...item,
+    cells: item.cells.map((value) => value.replace(/\s+/g, " ").trim()),
+  }));
 }
 
 export async function parseFirmwareCatalogHtml(
   html: string,
   base = catalogUrl,
 ): Promise<FirmwareCatalogEntry[]> {
-  const entries: FirmwareCatalogEntry[] = [];
-  let current: { href: string; text: string } | undefined;
-  const rewriter = new HTMLRewriter().on("a[href]", {
-    element(element) {
-      current = { href: element.getAttribute("href") ?? "", text: "" };
-      element.onEndTag(() => {
-        if (!current) return;
-        const name = current.text.replace(/\s+/g, " ").trim();
-        const page = new URL(current.href, base);
-        if (
-          name &&
-          page.origin === new URL(base).origin &&
-          !/\.(?:bin|rom|zip|7z|rar)(?:$|\?)/i.test(page.pathname)
-        ) {
-          entries.push({ name, page: page.href });
-        }
-        current = undefined;
-      });
-    },
-    text(text) {
-      if (current) current.text += text.text;
-    },
-  });
-  await rewriter.transform(new Response(html)).text();
+  const entries = (await parseTableRows(html, base))
+    .filter((row) => row.href && /^\/fr\/bios\/[^/]+\/?$/.test(new URL(row.href).pathname))
+    .map((row) => ({
+      name: row.cells[0] ?? "",
+      page: row.href!,
+      downloads: /^\d+$/.test(row.cells[1] ?? "") ? Number(row.cells[1]) : undefined,
+      updatedAt: row.cells[2] || undefined,
+    }))
+    .filter((entry) => entry.name);
   return [...new Map(entries.map((entry) => [entry.page, entry])).values()];
 }
 
-export async function fetchFirmwareCatalog(url = catalogUrl): Promise<FirmwareCatalogEntry[]> {
+export async function parseFirmwareDetailHtml(
+  html: string,
+  entry: FirmwareCatalogEntry,
+): Promise<FirmwareCatalogEntry> {
+  const fields = new Map<string, string>();
+  for (const row of await parseTableRows(html, entry.page)) {
+    if (row.cells.length >= 2) fields.set(row.cells[0]!.replace(/:$/, "").toLowerCase(), row.cells[1]!);
+  }
+  const downloads = fields.get("descargas");
+  return {
+    ...entry,
+    fileName: fields.get("nom de fichier") || undefined,
+    fileSize: fields.get("taille du fichier") || undefined,
+    downloads: downloads && /^\d+$/.test(downloads) ? Number(downloads) : entry.downloads,
+  };
+}
+
+async function fetchHtml(url: string): Promise<{ html: string; url: string }> {
   const response = await fetch(url, {
     redirect: "follow",
-    headers: { accept: "text/html", "user-agent": "Bun-Engine/0.1" },
+    headers: { accept: "text/html", "user-agent": "Bun-Engine/0.1 (+metadata-index)" },
   });
-  if (!response.ok) throw new Error(`firmware catalog returned HTTP ${response.status}`);
+  if (!response.ok) throw new Error(`firmware metadata returned HTTP ${response.status}: ${url}`);
   const declared = Number(response.headers.get("content-length") ?? 0);
-  if (declared > maxCatalogBytes) throw new Error("firmware catalog exceeds 2 MiB");
+  if (declared > maxCatalogBytes) throw new Error(`firmware metadata exceeds 2 MiB: ${url}`);
   const bytes = await response.bytes();
-  if (bytes.byteLength > maxCatalogBytes) throw new Error("firmware catalog exceeds 2 MiB");
-  return parseFirmwareCatalogHtml(new TextDecoder().decode(bytes), response.url || url);
+  if (bytes.byteLength > maxCatalogBytes) throw new Error(`firmware metadata exceeds 2 MiB: ${url}`);
+  return { html: new TextDecoder().decode(bytes), url: response.url || url };
+}
+
+export async function fetchFirmwareCatalog(url = catalogUrl): Promise<FirmwareCatalogEntry[]> {
+  const catalog = await fetchHtml(url);
+  const entries = await parseFirmwareCatalogHtml(catalog.html, catalog.url);
+  const detailed = new Array<FirmwareCatalogEntry>(entries.length);
+  let cursor = 0;
+  await Promise.all(
+    Array.from({ length: Math.min(4, entries.length) }, async () => {
+      while (cursor < entries.length) {
+        const index = cursor++;
+        const entry = entries[index]!;
+        try {
+          const detail = await fetchHtml(entry.page);
+          detailed[index] = await parseFirmwareDetailHtml(detail.html, entry);
+        } catch (error) {
+          detailed[index] = { ...entry };
+          console.error(`metadata warning: ${error instanceof Error ? error.message : String(error)}`);
+        }
+      }
+    }),
+  );
+  return detailed;
 }

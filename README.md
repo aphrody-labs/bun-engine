@@ -47,7 +47,7 @@ Commands:
 - 'bun run skills' lists the embedded Replica workflow; 'bun run ./packages/bun-engine/src/cli.ts skill recon' prints one skill and 'bun run ./packages/bun-engine/src/cli.ts pipeline replica' exposes its ordered artifact pipeline.
 - 'bun run ghidra:probe' qualifies Ghidra, NTRGhidra, Java and the native Windows toolchain through 'bun:windows'; 'ghidra:inspect <pe>' uses the native PE parser before analysis.
 - 'bep install', 'bep add' and 'bep pm' expose Bun Engine Packages.
-- 'bep firmware:index' reads bounded public firmware metadata through native Bun fetch without downloading payload archives.
+- 'bep firmware:index' crawls the complete public BIOS catalog and every detail page through bounded native Bun fetch/HTMLRewriter workers, without exposing or downloading payload archives.
 - 'bun run qualify:fc27'
 - 'bun run ./packages/bun-engine/src/cli.ts launch <appid>'
 - 'bun run ./packages/bun-engine/src/cli.ts trace <appid>' enables Proton logging for reproduction.
