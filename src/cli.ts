@@ -4,7 +4,8 @@ import { inspectAndroidArtifact, planLowering, type PortableTarget } from "./and
 import { launch, trace } from "./launcher";
 import { identifyWithMagika, setupMagika } from "./ml/magika";
 import { probeHost } from "./probe";
-import { listReplicaSkills, readReplicaSkill } from "./skills";
+import { listReplicaSkills, readReplicaSkill } from "./core/replica";
+import { replicaPipeline } from "./pipeline/replica";
 import {
   buildWorkspace,
   compileWorkspace,
@@ -23,6 +24,8 @@ async function main(): Promise<void> {
     console.log(JSON.stringify(await identifyWithMagika(appId), null, 2));
   else if (command === "skills") console.log(JSON.stringify(await listReplicaSkills(), null, 2));
   else if (command === "skill" && appId) console.log(await readReplicaSkill(appId));
+  else if (command === "pipeline" && appId === "replica")
+    console.log(JSON.stringify(await replicaPipeline(), null, 2));
   else if (command === "compile") {
     const compileTarget = isCompileTarget(appId) ? appId : undefined;
     if (appId && !compileTarget && appId.startsWith("bun-")) {
@@ -51,7 +54,7 @@ async function main(): Promise<void> {
     console.log(JSON.stringify(output, null, 2));
   } else {
     throw new Error(
-      "usage: bun-engine build [--release] | compile [bun-<os>-<arch>] [outfile] [bytecode-order] | test | web | probe | skills | skill <replica-name> | ml:setup | ml:identify <path> | qualify <appid> | launch <appid> | trace <appid> | android:inspect <path> [pe|elf|wasm] [--sources]",
+      "usage: bun-engine build [--release] | compile [bun-<os>-<arch>] [outfile] [bytecode-order] | test | web | probe | skills | skill <replica-name> | pipeline replica | ml:setup | ml:identify <path> | qualify <appid> | launch <appid> | trace <appid> | android:inspect <path> [pe|elf|wasm] [--sources]",
     );
   }
 }

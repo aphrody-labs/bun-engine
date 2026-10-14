@@ -1,6 +1,6 @@
 import { join } from "node:path";
 
-const replicaRoot = join(import.meta.dir, "skills", "replica");
+const replicaRoot = join(import.meta.dir, "replica");
 
 export const replicaSkillIds = [
   "replica-recon",
@@ -24,7 +24,7 @@ export interface ReplicaSkill {
   description: string;
 }
 
-function resolveSkillId(value: string): ReplicaSkillId {
+export function resolveReplicaSkillId(value: string): ReplicaSkillId {
   const id = value.startsWith("replica-") ? value : `replica-${value}`;
   if (!replicaSkillIds.includes(id as ReplicaSkillId)) {
     throw new TypeError(`unknown Replica skill: ${value}`);
@@ -46,7 +46,7 @@ function extractDescription(source: string): string {
 }
 
 export async function readReplicaSkill(value: string): Promise<string> {
-  const id = resolveSkillId(value);
+  const id = resolveReplicaSkillId(value);
   const path = join(replicaRoot, id, "SKILL.md");
   const file = Bun.file(path);
   if (!(await file.exists())) throw new Error(`Replica skill source is missing: ${path}`);

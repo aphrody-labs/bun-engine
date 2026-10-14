@@ -8,7 +8,8 @@
   "consolePlugins": "src/plugins/consoles.ts",
   "formatLoaders": "src/plugins/formats.ts",
   "ml": "src/ml/magika",
-  "skills": "src/skills/replica",
+  "skills": "src/core/replica",
+  "replicaPipeline": "src/pipeline/replica.ts",
   "cargoWorkspace": "Cargo.toml",
   "bunWorkspace": "package.json",
   "cmakeWorkspace": "CMakeLists.txt",
@@ -21,7 +22,7 @@
     "directx12": ["src/gpu/directx/headers", "src/gpu/directx/compiler", "src/gpu/directx/samples"],
     "render": ["crates/wgpu", "crates/bevy", "crates/winit"],
     "fileTypeMl": "src/ml/magika",
-    "replicaSkills": "src/skills/replica",
+    "replicaSkills": "src/core/replica",
     "toolchains": [
       "toolchains/llvm",
       "toolchains/qemu",

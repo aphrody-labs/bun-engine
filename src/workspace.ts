@@ -58,7 +58,7 @@ export async function compileWorkspace(options: CompileWorkspaceOptions = {}): P
       assets: [
         join(root, "apps", "web"),
         join(root, "config"),
-        join(root, "src", "skills", "replica"),
+        join(root, "src", "core", "replica"),
       ],
       execArgv: ["--smol"],
       autoloadTsconfig: false,

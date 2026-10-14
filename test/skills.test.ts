@@ -1,5 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import { listReplicaSkills, readReplicaSkill, replicaSkillIds } from "../src/skills";
+import { listReplicaSkills, readReplicaSkill, replicaSkillIds } from "../src/core/replica";
+import { replicaPipeline } from "../src/pipeline/replica";
 
 describe("Replica skill pack", () => {
   test("exposes the complete ordered workflow", async () => {
@@ -15,5 +16,13 @@ describe("Replica skill pack", () => {
 
   test("rejects unknown skills", async () => {
     expect(readReplicaSkill("missing")).rejects.toThrow("unknown Replica skill");
+  });
+
+  test("connects every stage to the unified pipeline", async () => {
+    const pipeline = await replicaPipeline();
+    expect(pipeline).toHaveLength(11);
+    expect(pipeline[0]?.requires).toBeNull();
+    expect(pipeline.at(-1)?.requires).toBe("replica-launch");
+    expect(pipeline.every(({ artifacts }) => artifacts.length > 0)).toBeTrue();
   });
 });
