@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import { policyFor } from "../src/catalog";
-import { launchCommand } from "../src/launcher";
+import { policyFor } from "../packages/bun-engine/src/catalog";
+import { launchCommand } from "../packages/bun-engine/src/launcher";
 
 describe("compatibility policy", () => {
   test("keeps FC 27 experimental until end-to-end qualification", () => {

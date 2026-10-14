@@ -37,7 +37,7 @@ workspaces and `src/pipeline/reverse.ts` defines the canonical engine sequence:
 
 ## Windows 11 integration
 
-`src/re/ghidra.ts` uses the fork's `bun:windows` API directly. It discovers the
+`packages/bun-engine/src/re/ghidra.ts` uses the fork's `bun:windows` API directly. It discovers the
 Windows version, MSVC and Windows SDK without `vswhere`, parses PE metadata without
 loading the image, and contains Gradle/Java descendants in a Windows Job Object.
 Closing the owner terminates its entire process tree.

@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import { listReplicaSkills, readReplicaSkill, replicaSkillIds } from "../src/core/replica";
-import { replicaPipeline } from "../src/pipeline/replica";
+import { listReplicaSkills, readReplicaSkill, replicaSkillIds } from "../packages/bun-engine/src/core/replica";
+import { replicaPipeline } from "../packages/bun-engine/src/pipeline/replica";
 
 describe("Replica skill pack", () => {
   test("exposes the complete ordered workflow", async () => {

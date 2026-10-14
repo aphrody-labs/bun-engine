@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { binaryFormatLoaders, consoleIds, consolePlugins, formatPlugins } from "../src/plugins";
+import { binaryFormatLoaders, consoleIds, consolePlugins, formatPlugins } from "../packages/bun-engine/src/plugins";
 
 describe("Bun console plugins", () => {
   test("owns one plugin per console", () => {

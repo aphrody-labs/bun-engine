@@ -13,7 +13,7 @@ Pinned source owners:
 - `src/drivers/nvidia-open`: CachyOS fork of NVIDIA's open Linux kernel modules.
 - `src/gpu/cuda/cccl`: CUDA C++ core libraries.
 - `src/gpu/cuda/samples`: CUDA runtime and driver API examples.
-- `src/runtime/bun`: Bun GPU, Buv, PyJS, Python/PyCUDA and FFI owners.
+- `crates/bun-runtime`: Bun GPU, Buv, PyJS, Python/PyCUDA and FFI owners.
 
 The default kernel links none of these. `editor` activates Bevy ECS, wgpu and
 winit. CUDA and kernel modules remain target/hardware-qualified extensions.

@@ -1,11 +1,13 @@
-# Bun Engine emulation plugins
+# Bun Engine native engine sources
 
-This workspace contains unified GPL emulation components. It is intentionally
-separate from the dependency-free Bun Engine kernel and is not linked by its
-default build.
+`crates/` is the unique root for native runtime, rendering, emulation, SDK,
+firmware, compatibility, GPU and reverse-engineering source owners.
 
-The packages contain no ROM, BIOS, firmware, keys, game data, or IECODE
-NIE/IEVR code. Callers must provide any inputs they are legally permitted to
-use.
+The checked-in gitlinks are executable upstream implementations, not placeholder
+interfaces. The engine catalog binds each console to an exact source revision.
+`libnds`, `libogc` and `open-agb-firm` provide the open SDK/firmware toolchain;
+the Rust and C/C++ emulators consume homebrew and user-supplied test payloads.
 
-See `THIRD_PARTY.md` and each package's `LICENSE` file before distribution.
+The root build keeps one orchestration surface. Upstream projects that still
+carry their own Cargo workspace are pinned under this root until their manifests
+are normalized into the root Cargo graph; they are never represented by stubs.

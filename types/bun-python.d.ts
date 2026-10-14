@@ -1,1 +1,1 @@
-/// <reference path="../src/runtime/bun/packages/bun-types/python.d.ts" />
+/// <reference path="../crates/bun-runtime/packages/bun-types/python.d.ts" />

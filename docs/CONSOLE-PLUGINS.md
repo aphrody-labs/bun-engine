@@ -6,8 +6,8 @@ lazily through their declared owner.
 
 Each component declares its console, CPU domains, runtime role, firmware policy,
 license metadata, publication gate, immutable source revision, build owner, and source owner files.
-These files may identify Rust crates or free C, C++, and SDK trees under `plugins/` or
-`src/console/`; the catalog never authorizes downloads or proprietary inputs.
+These files identify real Rust, C, C++, open SDK and redistributable firmware
+source owners directly under `crates/`; no placeholder implementation is accepted.
 
 License metadata does not block local research. Publication remains disabled
 while `publicationGate` is `deferred-review`; changing it to `approved` requires

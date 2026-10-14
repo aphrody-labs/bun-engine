@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { compileTargets, isCompileTarget } from "../src/workspace";
+import { compileTargets, isCompileTarget } from "../packages/bun-engine/src/workspace";
 
 type Workspace = {
   schema: number;

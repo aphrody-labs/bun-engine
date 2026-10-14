@@ -1,56 +1,53 @@
-[submodule "plugins/android"]
-	path = plugins/android
-	url = https://github.com/aphrody-labs/bun-engine-android.git
-[submodule "src/console/vendor/libnds"]
-	path = src/console/vendor/libnds
+[submodule "crates/libnds"]
+	path = crates/libnds
 	url = https://github.com/devkitPro/libnds.git
-[submodule "src/console/vendor/libogc"]
-	path = src/console/vendor/libogc
+[submodule "crates/libogc"]
+	path = crates/libogc
 	url = https://github.com/devkitPro/libogc.git
-[submodule "src/console/vendor/melonds"]
-	path = src/console/vendor/melonds
+[submodule "crates/melonds"]
+	path = crates/melonds
 	url = https://github.com/melonDS-emu/melonDS.git
-[submodule "src/console/vendor/open-agb-firm"]
-	path = src/console/vendor/open-agb-firm
+[submodule "crates/open-agb-firm"]
+	path = crates/open-agb-firm
 	url = https://github.com/profi200/open_agb_firm.git
-[submodule "src/console/vendor/dolphin"]
-	path = src/console/vendor/dolphin
+[submodule "crates/dolphin"]
+	path = crates/dolphin
 	url = https://github.com/dolphin-emu/dolphin.git
-[submodule "src/console/vendor/azahar"]
-	path = src/console/vendor/azahar
+[submodule "crates/azahar"]
+	path = crates/azahar
 	url = https://github.com/azahar-emu/azahar.git
-[submodule "src/console/vendor/retroarch"]
-	path = src/console/vendor/retroarch
+[submodule "crates/retroarch"]
+	path = crates/retroarch
 	url = https://github.com/libretro/RetroArch.git
-[submodule "src/console/vendor/mame"]
-	path = src/console/vendor/mame
+[submodule "crates/mame"]
+	path = crates/mame
 	url = https://github.com/mamedev/mame.git
-[submodule "src/console/vendor/ares"]
-	path = src/console/vendor/ares
+[submodule "crates/ares"]
+	path = crates/ares
 	url = https://github.com/ares-emulator/ares.git
-[submodule "plugins/emulation/rust/tetanes"]
-	path = plugins/emulation/rust/tetanes
+[submodule "crates/tetanes"]
+	path = crates/tetanes
 	url = https://github.com/aphrody-labs/tetanes.git
-[submodule "plugins/emulation/rust/retroboy"]
-	path = plugins/emulation/rust/retroboy
+[submodule "crates/retroboy"]
+	path = crates/retroboy
 	url = https://github.com/aphrody-labs/retroboy.git
-[submodule "plugins/emulation/rust/rustboyadvance-ng"]
-	path = plugins/emulation/rust/rustboyadvance-ng
+[submodule "crates/rustboyadvance-ng"]
+	path = crates/rustboyadvance-ng
 	url = https://github.com/aphrody-labs/rustboyadvance-ng.git
-[submodule "plugins/emulation/rust/dust"]
-	path = plugins/emulation/rust/dust
+[submodule "crates/dust"]
+	path = crates/dust
 	url = https://github.com/aphrody-labs/dust.git
-[submodule "plugins/emulation/rust/gopher64"]
-	path = plugins/emulation/rust/gopher64
+[submodule "crates/gopher64"]
+	path = crates/gopher64
 	url = https://github.com/aphrody-labs/gopher64.git
-[submodule "plugins/emulation/rust/jgenesis"]
-	path = plugins/emulation/rust/jgenesis
+[submodule "crates/jgenesis"]
+	path = crates/jgenesis
 	url = https://github.com/aphrody-labs/jgenesis.git
-[submodule "plugins/emulation/rust/starpsx"]
-	path = plugins/emulation/rust/starpsx
+[submodule "crates/starpsx"]
+	path = crates/starpsx
 	url = https://github.com/aphrody-labs/starpsx.git
-[submodule "plugins/emulation/rust/zakuro"]
-	path = plugins/emulation/rust/zakuro
+[submodule "crates/zakuro"]
+	path = crates/zakuro
 	url = https://github.com/aphrody-labs/zakuro.git
 [submodule "crates/bevy"]
 	path = crates/bevy
@@ -61,22 +58,22 @@
 [submodule "crates/winit"]
 	path = crates/winit
 	url = https://github.com/aphrody-labs/winit.git
-[submodule "src/kernel/linux"]
-	path = src/kernel/linux
+[submodule "crates/linux-cachyos"]
+	path = crates/linux-cachyos
 	url = https://github.com/aphrody-labs/linux-cachyos.git
 	ignore = dirty
 	shallow = true
-[submodule "src/kernel/patches"]
-	path = src/kernel/patches
+[submodule "crates/kernel-patches"]
+	path = crates/kernel-patches
 	url = https://github.com/aphrody-labs/kernel-patches.git
 	shallow = true
-[submodule "src/compat/proton"]
-	path = src/compat/proton
+[submodule "crates/proton-cachyos"]
+	path = crates/proton-cachyos
 	url = https://github.com/aphrody-labs/proton-cachyos.git
 	branch = cachyos_main
 	shallow = true
-[submodule "src/compat/wine"]
-	path = src/compat/wine
+[submodule "crates/wine-cachyos"]
+	path = crates/wine-cachyos
 	url = https://github.com/aphrody-labs/wine-cachyos.git
 	branch = proton_9.0
 	shallow = true
@@ -85,49 +82,49 @@
 	url = https://github.com/aphrody-labs/wiki.git
 	branch = next
 	shallow = true
-[submodule "src/platform/chwd"]
-	path = src/platform/chwd
+[submodule "crates/chwd"]
+	path = crates/chwd
 	url = https://github.com/aphrody-labs/chwd.git
 	shallow = true
-[submodule "src/platform/pkg-manage-util"]
-	path = src/platform/pkg-manage-util
+[submodule "crates/pkg-manage-util"]
+	path = crates/pkg-manage-util
 	url = https://github.com/aphrody-labs/pkg-manage-util.git
 	branch = develop
 	shallow = true
-[submodule "src/platform/steamos-nvidia-installer"]
-	path = src/platform/steamos-nvidia-installer
+[submodule "crates/steamos-nvidia-installer"]
+	path = crates/steamos-nvidia-installer
 	url = https://github.com/aphrody-labs/steamos-nvidia-installer.git
 	shallow = true
-[submodule "src/platform/steamcmd"]
-	path = src/platform/steamcmd
+[submodule "crates/steamcmd"]
+	path = crates/steamcmd
 	url = https://github.com/aphrody-labs/steamcmd.git
 	shallow = true
-[submodule "src/platform/steamcmd-api"]
-	path = src/platform/steamcmd-api
+[submodule "crates/steamcmd-api"]
+	path = crates/steamcmd-api
 	url = https://github.com/aphrody-labs/steamcmd-api.git
 	shallow = true
-[submodule "src/drivers/nvidia-open"]
-	path = src/drivers/nvidia-open
+[submodule "crates/nvidia-open"]
+	path = crates/nvidia-open
 	url = https://github.com/aphrody-labs/open-gpu-kernel-modules.git
 	branch = 560-cachyos
 	shallow = true
-[submodule "src/gpu/cuda/cccl"]
-	path = src/gpu/cuda/cccl
+[submodule "crates/cuda-cccl"]
+	path = crates/cuda-cccl
 	url = https://github.com/NVIDIA/cccl.git
-[submodule "src/gpu/cuda/samples"]
-	path = src/gpu/cuda/samples
+[submodule "crates/cuda-samples"]
+	path = crates/cuda-samples
 	url = https://github.com/NVIDIA/cuda-samples.git
-[submodule "src/gpu/directx/headers"]
-	path = src/gpu/directx/headers
+[submodule "crates/directx-headers"]
+	path = crates/directx-headers
 	url = https://github.com/microsoft/DirectX-Headers.git
-[submodule "src/gpu/directx/compiler"]
-	path = src/gpu/directx/compiler
+[submodule "crates/directx-compiler"]
+	path = crates/directx-compiler
 	url = https://github.com/microsoft/DirectXShaderCompiler.git
-[submodule "src/gpu/directx/samples"]
-	path = src/gpu/directx/samples
+[submodule "crates/directx-samples"]
+	path = crates/directx-samples
 	url = https://github.com/microsoft/DirectX-Graphics-Samples.git
-[submodule "src/runtime/bun"]
-	path = src/runtime/bun
+[submodule "crates/bun-runtime"]
+	path = crates/bun-runtime
 	url = https://github.com/aphrody-labs/bun.git
 [submodule "toolchains/vcpkg"]
 	path = toolchains/vcpkg
@@ -144,18 +141,21 @@
 [submodule "toolchains/make"]
 	path = toolchains/make
 	url = https://github.com/mirror/make.git
-[submodule "src/ml/magika"]
-	path = src/ml/magika
+[submodule "crates/magika"]
+	path = crates/magika
 	url = https://github.com/aphrody-labs/magika.git
-[submodule "src/re/ghidra"]
-	path = src/re/ghidra
+[submodule "crates/ghidra"]
+	path = crates/ghidra
 	url = https://github.com/aphrody-labs/ghidra.git
 	shallow = true
 [submodule "crates/ghidra-decompiler"]
 	path = crates/ghidra-decompiler
 	url = https://github.com/aphrody-labs/ghidra-decompiler.git
 	shallow = true
-[submodule "src/re/extensions/ntr-ghidra"]
-	path = src/re/extensions/ntr-ghidra
+[submodule "crates/ntr-ghidra"]
+	path = crates/ntr-ghidra
 	url = https://github.com/aphrody-labs/NTRGhidra.git
 	shallow = true
+[submodule "crates/omarchy-windows"]
+	path = crates/omarchy-windows
+	url = https://github.com/aphrody-labs/try-omarchy-windows.git

@@ -7,13 +7,19 @@ members = [
   "crates/aphrody-switch",
   "crates/aphrody-wii",
   "crates/aphrody-wii-image",
+  "crates/android-native",
 ]
 exclude = [
   "crates/bevy",
   "crates/wgpu",
   "crates/winit",
-  "plugins/emulation/rust/*",
-  "src/ml/magika",
+  "crates/dust",
+  "crates/jgenesis",
+  "crates/rustboyadvance-ng",
+  "crates/starpsx",
+  "crates/tetanes",
+  "crates/zakuro",
+  "crates/magika",
 ]
 default-members = ["crates/bun-engine-core"]
 

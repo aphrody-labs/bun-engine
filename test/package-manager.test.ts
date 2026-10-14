@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { packageManagerInvocation } from "../src/package-manager";
+import { packageManagerInvocation } from "../packages/bun-engine/src/package-manager";
 
 describe("bep package manager", () => {
   test("delegates Bun package-manager commands without rewriting arguments", () => {

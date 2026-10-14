@@ -1,5 +1,9 @@
 {
-  "files": ["src/runtime/bun/packages/bun-types/windows.d.ts"],
+  "files": [
+    "crates/bun-runtime/packages/bun-types/bun.d.ts",
+    "crates/bun-runtime/packages/bun-types/windows.d.ts",
+    "crates/bun-runtime/packages/bun-tauri/js/api/global.d.ts"
+  ],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "target": "ESNext",
@@ -10,17 +14,11 @@
     "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "test/**/*.ts", "types/**/*.d.ts"],
+  "include": ["packages/**/*.ts", "web/**/*.ts", "web/**/*.tsx", "test/**/*.ts", "types/**/*.d.ts"],
   "exclude": [
     "crates/**",
-    "plugins/emulation/rust/**",
-    "src/console/vendor/**",
-    "src/drivers/**",
-    "src/gpu/**",
-    "src/kernel/**",
-    "src/ml/magika/**",
-    "src/runtime/bun/**",
-    "src/core/replica/**",
+    "crates/**",
+    "packages/bun-engine/src/core/replica/**",
     "toolchains/**"
   ]
 }

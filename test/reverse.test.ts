@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import { reverseEngineeringPipeline } from "../src/pipeline/reverse";
-import { inspectPeForGhidra, probeGhidraWindows } from "../src/re/ghidra";
+import { reverseEngineeringPipeline } from "../packages/bun-engine/src/pipeline/reverse";
+import { inspectPeForGhidra, probeGhidraWindows } from "../packages/bun-engine/src/re/ghidra";
 
 describe("Ghidra Windows pipeline", () => {
   test("binds every reverse-engineering owner", () => {

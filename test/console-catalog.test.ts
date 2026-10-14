@@ -3,7 +3,7 @@ import {
   loadConsoleCatalog,
   validateConsoleCatalog,
   type ConsoleCatalog,
-} from "../src/console/catalog";
+} from "../packages/bun-engine/src/console/catalog";
 
 describe("console plugin catalog", () => {
   test("validates every local owner and pinned submodule", async () => {

@@ -64,8 +64,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "84e6082ce27c87ed218fb369a9944644aa2243a6",
-      "buildOwner": "src/console/catalog.ts#libnds",
-      "sources": [{ "kind": "c-source-tree", "path": "src/console/vendor/libnds" }]
+      "buildOwner": "packages/bun-engine/src/console/catalog.ts#libnds",
+      "sources": [{ "kind": "c-source-tree", "path": "crates/libnds" }]
     },
     {
       "id": "devkitpro-libogc",
@@ -77,8 +77,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "adf4c782da8c55c8f17aca2047e128502e7eddc2",
-      "buildOwner": "src/console/catalog.ts#libogc",
-      "sources": [{ "kind": "c-source-tree", "path": "src/console/vendor/libogc" }]
+      "buildOwner": "packages/bun-engine/src/console/catalog.ts#libogc",
+      "sources": [{ "kind": "c-source-tree", "path": "crates/libogc" }]
     },
     {
       "id": "melonds",
@@ -90,8 +90,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "906e9ebb27da8c6a715cd7abab4abfe8a8d29427",
-      "buildOwner": "src/console/catalog.ts#melonds",
-      "sources": [{ "kind": "cpp-source-tree", "path": "src/console/vendor/melonds" }]
+      "buildOwner": "packages/bun-engine/src/console/catalog.ts#melonds",
+      "sources": [{ "kind": "cpp-source-tree", "path": "crates/melonds" }]
     },
     {
       "id": "open-agb-firm",
@@ -103,8 +103,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "401c3dff900f658d3edf77ababcfaf5dca54a0a8",
-      "buildOwner": "src/console/catalog.ts#open-agb-firm",
-      "sources": [{ "kind": "c-source-tree", "path": "src/console/vendor/open-agb-firm" }]
+      "buildOwner": "packages/bun-engine/src/console/catalog.ts#open-agb-firm",
+      "sources": [{ "kind": "c-source-tree", "path": "crates/open-agb-firm" }]
     },
     {
       "id": "ares",
@@ -116,8 +116,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "9408cb43d4948fc3ea6e152a307a34348df3fe04",
-      "buildOwner": "src/console/PROVENANCE.md#ares",
-      "sources": [{ "kind": "cpp-source-tree", "path": "src/console/vendor/ares" }]
+      "buildOwner": "docs/CONSOLE-PROVENANCE.md#ares",
+      "sources": [{ "kind": "cpp-source-tree", "path": "crates/ares" }]
     },
     {
       "id": "dolphin",
@@ -129,8 +129,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "8d2ad1a662472955497e5bb79d7b9ec6999e1f0d",
-      "buildOwner": "src/console/PROVENANCE.md#dolphin",
-      "sources": [{ "kind": "cpp-source-tree", "path": "src/console/vendor/dolphin" }]
+      "buildOwner": "docs/CONSOLE-PROVENANCE.md#dolphin",
+      "sources": [{ "kind": "cpp-source-tree", "path": "crates/dolphin" }]
     },
     {
       "id": "azahar",
@@ -142,8 +142,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "73ed0e9106a5b69a8ef67d920f534150e82c6277",
-      "buildOwner": "src/console/PROVENANCE.md#azahar",
-      "sources": [{ "kind": "cpp-source-tree", "path": "src/console/vendor/azahar" }]
+      "buildOwner": "docs/CONSOLE-PROVENANCE.md#azahar",
+      "sources": [{ "kind": "cpp-source-tree", "path": "crates/azahar" }]
     },
     {
       "id": "mame",
@@ -155,8 +155,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "c51cea1d8975d3918bfde7cfdd0ec9abcf3fe5a5",
-      "buildOwner": "src/console/PROVENANCE.md#mame",
-      "sources": [{ "kind": "cpp-source-tree", "path": "src/console/vendor/mame" }]
+      "buildOwner": "docs/CONSOLE-PROVENANCE.md#mame",
+      "sources": [{ "kind": "cpp-source-tree", "path": "crates/mame" }]
     },
     {
       "id": "retroarch",
@@ -168,8 +168,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "9ecdcecf6fe7b976bf3ccbc1baa6642c496eabac",
-      "buildOwner": "src/console/PROVENANCE.md#retroarch",
-      "sources": [{ "kind": "c-source-tree", "path": "src/console/vendor/retroarch" }]
+      "buildOwner": "docs/CONSOLE-PROVENANCE.md#retroarch",
+      "sources": [{ "kind": "c-source-tree", "path": "crates/retroarch" }]
     },
     {
       "id": "tetanes",
@@ -181,8 +181,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "a0a6b17f8ba9c5ee451453fb2409753fd06e5a31",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#tetanes",
-      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/tetanes" }]
+      "buildOwner": "docs/RUST-EMULATORS.md#tetanes",
+      "sources": [{ "kind": "rust-crate", "path": "crates/tetanes" }]
     },
     {
       "id": "retroboy",
@@ -194,8 +194,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "edf90d9fb192372a657a18d44f5c9841805fa554",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#retroboy",
-      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/retroboy" }]
+      "buildOwner": "docs/RUST-EMULATORS.md#retroboy",
+      "sources": [{ "kind": "rust-crate", "path": "crates/retroboy" }]
     },
     {
       "id": "rustboyadvance-ng",
@@ -207,8 +207,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "1d7ff23a6adb42d803ebd393c3d27d94e4fea15e",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#rustboyadvance-ng",
-      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/rustboyadvance-ng" }]
+      "buildOwner": "docs/RUST-EMULATORS.md#rustboyadvance-ng",
+      "sources": [{ "kind": "rust-crate", "path": "crates/rustboyadvance-ng" }]
     },
     {
       "id": "dust",
@@ -220,8 +220,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "76d79f25e4ea3ce355c4ac868f5ac9a233e64b89",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#dust",
-      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/dust" }]
+      "buildOwner": "docs/RUST-EMULATORS.md#dust",
+      "sources": [{ "kind": "rust-crate", "path": "crates/dust" }]
     },
     {
       "id": "gopher64",
@@ -233,8 +233,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "9b312ea60d1db87e85964c2a4c6fe5dae1540609",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#gopher64",
-      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/gopher64" }]
+      "buildOwner": "docs/RUST-EMULATORS.md#gopher64",
+      "sources": [{ "kind": "rust-crate", "path": "crates/gopher64" }]
     },
     {
       "id": "jgenesis",
@@ -246,8 +246,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "9fcfd9c9495ae6a65c3a9354599665d3bf62a047",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#jgenesis",
-      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/jgenesis" }]
+      "buildOwner": "docs/RUST-EMULATORS.md#jgenesis",
+      "sources": [{ "kind": "rust-crate", "path": "crates/jgenesis" }]
     },
     {
       "id": "starpsx",
@@ -259,8 +259,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "e8551eedac6d15a4ed7b7fb123c70f97217d1ed4",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#starpsx",
-      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/starpsx" }]
+      "buildOwner": "docs/RUST-EMULATORS.md#starpsx",
+      "sources": [{ "kind": "rust-crate", "path": "crates/starpsx" }]
     },
     {
       "id": "zakuro",
@@ -272,8 +272,8 @@
       "publicationGate": "deferred-review",
       "integration": "submodule",
       "sourceRev": "0ce36eeb64adf8969c5d94bc907ccb68b9e73f35",
-      "buildOwner": "plugins/emulation/rust/CATALOG.md#zakuro",
-      "sources": [{ "kind": "rust-crate", "path": "plugins/emulation/rust/zakuro" }]
+      "buildOwner": "docs/RUST-EMULATORS.md#zakuro",
+      "sources": [{ "kind": "rust-crate", "path": "crates/zakuro" }]
     }
   ]
 }

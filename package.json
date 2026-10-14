@@ -4,29 +4,30 @@
   "private": false,
   "license": "MIT",
   "bin": {
-    "bep": "./src/bep.ts",
-    "bun-engine": "./src/cli.ts"
+    "bep": "./packages/bun-engine/src/bep.ts",
+    "bun-engine": "./packages/bun-engine/src/cli.ts"
   },
   "type": "module",
+  "workspaces": ["packages/*", "web/*"],
   "scripts": {
-    "build": "bun run ./src/cli.ts build",
-    "compile": "bun run ./src/cli.ts compile",
-    "bep:compile": "bun run ./src/bep-build.ts",
+    "build": "bun run ./packages/bun-engine/src/cli.ts build",
+    "compile": "bun run ./packages/bun-engine/src/cli.ts compile",
+    "bep:compile": "bun run ./packages/bun-engine/src/bep-build.ts",
     "check": "bun check --noEmit",
     "test": "bun test ./test",
-    "workspace:test": "bun run ./src/cli.ts test",
-    "ml:setup": "bun run ./src/cli.ts ml:setup",
-    "ml:identify": "bun run ./src/cli.ts ml:identify",
-    "skills": "bun run ./src/cli.ts skills",
-    "ghidra:probe": "bun run ./src/cli.ts ghidra:probe",
-    "ghidra:build": "bun run ./src/cli.ts ghidra:build",
-    "web": "bun run ./src/cli.ts web",
-    "probe": "bun run ./src/cli.ts probe",
-    "qualify:fc27": "bun run ./src/cli.ts qualify 4080220",
-    "android:test": "bun test ./plugins/android/packages/android-pipeline/tests",
+    "workspace:test": "bun run ./packages/bun-engine/src/cli.ts test",
+    "ml:setup": "bun run ./packages/bun-engine/src/cli.ts ml:setup",
+    "ml:identify": "bun run ./packages/bun-engine/src/cli.ts ml:identify",
+    "skills": "bun run ./packages/bun-engine/src/cli.ts skills",
+    "ghidra:probe": "bun run ./packages/bun-engine/src/cli.ts ghidra:probe",
+    "ghidra:build": "bun run ./packages/bun-engine/src/cli.ts ghidra:build",
+    "web": "bun run ./packages/bun-engine/src/cli.ts web",
+    "probe": "bun run ./packages/bun-engine/src/cli.ts probe",
+    "qualify:fc27": "bun run ./packages/bun-engine/src/cli.ts qualify 4080220",
+    "android:test": "bun test ./packages/android-pipeline/tests",
     "console:manifest": "bun test ./test/console-catalog.test.ts",
-    "native:test": "bun ./src/runtime/bun/scripts/build/rust/cargo-serial.ts --msvc test --workspace",
-    "console:validate": "bun run ./src/console/validate.ts"
+    "native:test": "bun ./crates/bun-runtime/scripts/build/rust/cargo-serial.ts --msvc test --workspace",
+    "console:validate": "bun run ./packages/bun-engine/src/console/validate.ts"
   },
   "dependencies": {
     "@typesafe-ai/sdk": "0.6.0"
