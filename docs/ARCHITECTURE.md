@@ -7,6 +7,7 @@
 5. Editor: separate binary using the same public contracts.
 6. Tooling: Bun asset graph, packaging, hot reload and compatibility services.
 7. Binary ingestion: the dependency-free kernel identifies bounded PE, ELF, Wasm,
+   Android packages and runtime formats (APK/AAB/APKS/APEX, DEX/OAT/ART),
    Nintendo DS, archive, virtual-filesystem and firmware headers. Identification
    reports architecture and endianness when the format defines them; decoding,
    mounting, execution and arbitrary conversion belong to opt-in owners.

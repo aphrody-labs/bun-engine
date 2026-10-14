@@ -6,6 +6,7 @@
 pub enum BinaryFamily {
     Executable,
     Bytecode,
+    Android,
     Rom,
     Archive,
     VirtualFileSystem,
@@ -18,6 +19,13 @@ pub enum BinaryFormat {
     Pe,
     Elf,
     WebAssembly,
+    Dex,
+    Oat,
+    Art,
+    AndroidApk,
+    AndroidAppBundle,
+    AndroidApks,
+    AndroidApex,
     NintendoDsRom,
     Zip,
     Gzip,
@@ -42,7 +50,10 @@ impl BinaryFormat {
     pub const fn family(self) -> BinaryFamily {
         match self {
             Self::Pe | Self::Elf => BinaryFamily::Executable,
-            Self::WebAssembly => BinaryFamily::Bytecode,
+            Self::WebAssembly | Self::Dex | Self::Oat | Self::Art => BinaryFamily::Bytecode,
+            Self::AndroidApk | Self::AndroidAppBundle | Self::AndroidApks | Self::AndroidApex => {
+                BinaryFamily::Android
+            }
             Self::NintendoDsRom => BinaryFamily::Rom,
             Self::Zip
             | Self::Gzip
@@ -87,11 +98,55 @@ pub enum Architecture {
     Unknown(u16),
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
+pub struct ArchitectureSet(u16);
+
+impl ArchitectureSet {
+    const fn bit(architecture: Architecture) -> u16 {
+        match architecture {
+            Architecture::X86 => 1 << 0,
+            Architecture::X86_64 => 1 << 1,
+            Architecture::Arm => 1 << 2,
+            Architecture::Aarch64 => 1 << 3,
+            Architecture::RiscV64 => 1 << 4,
+            _ => 0,
+        }
+    }
+
+    pub const fn contains(self, architecture: Architecture) -> bool {
+        self.0 & Self::bit(architecture) != 0
+    }
+
+    pub const fn is_empty(self) -> bool {
+        self.0 == 0
+    }
+
+    pub const fn len(self) -> u32 {
+        self.0.count_ones()
+    }
+
+    fn insert(&mut self, architecture: Architecture) {
+        self.0 |= Self::bit(architecture);
+    }
+
+    const fn single(self) -> Option<Architecture> {
+        match self.0 {
+            1 => Some(Architecture::X86),
+            2 => Some(Architecture::X86_64),
+            4 => Some(Architecture::Arm),
+            8 => Some(Architecture::Aarch64),
+            16 => Some(Architecture::RiscV64),
+            _ => None,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct BinaryInspection {
     pub format: BinaryFormat,
     pub family: BinaryFamily,
     pub architecture: Option<Architecture>,
+    pub android_abis: ArchitectureSet,
     pub endianness: Option<Endianness>,
     pub bits: Option<u8>,
 }
@@ -107,6 +162,7 @@ impl BinaryInspection {
             format,
             family: format.family(),
             architecture,
+            android_abis: ArchitectureSet(0),
             endianness,
             bits,
         }
@@ -115,16 +171,93 @@ impl BinaryInspection {
     const UNKNOWN: Self = Self::new(BinaryFormat::Unknown, None, None, None);
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum OutputFormat {
+    Pe,
+    Elf,
+    WebAssembly,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum RuntimeRequirement {
+    WindowsCompatibility,
+    UnixCompatibility,
+    WebAssemblyRuntime,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum UnsupportedReason {
+    BinaryTranslation,
+    NonExecutableInput,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum OutputStrategy {
+    PassThrough,
+    NeedsRuntime(RuntimeRequirement),
+    Unsupported(UnsupportedReason),
+}
+
+/// Selects an honest packaging/execution strategy; it never implies binary conversion.
+pub const fn output_strategy(source: BinaryFormat, target: OutputFormat) -> OutputStrategy {
+    match (source, target) {
+        (BinaryFormat::Pe, OutputFormat::Pe)
+        | (BinaryFormat::Elf, OutputFormat::Elf)
+        | (BinaryFormat::WebAssembly, OutputFormat::WebAssembly) => OutputStrategy::PassThrough,
+        (BinaryFormat::Pe, OutputFormat::Elf) => {
+            OutputStrategy::NeedsRuntime(RuntimeRequirement::WindowsCompatibility)
+        }
+        (BinaryFormat::Elf, OutputFormat::Pe) => {
+            OutputStrategy::NeedsRuntime(RuntimeRequirement::UnixCompatibility)
+        }
+        (BinaryFormat::WebAssembly, OutputFormat::Pe | OutputFormat::Elf) => {
+            OutputStrategy::NeedsRuntime(RuntimeRequirement::WebAssemblyRuntime)
+        }
+        (BinaryFormat::Pe | BinaryFormat::Elf, OutputFormat::WebAssembly) => {
+            OutputStrategy::Unsupported(UnsupportedReason::BinaryTranslation)
+        }
+        _ => OutputStrategy::Unsupported(UnsupportedReason::NonExecutableInput),
+    }
+}
+
 /// Inspects only bounded, format-defined header bytes. Unknown and truncated inputs are safe.
 pub fn inspect_binary(bytes: &[u8]) -> BinaryInspection {
     inspect_pe(bytes)
         .or_else(|| inspect_elf(bytes))
         .or_else(|| inspect_wasm(bytes))
+        .or_else(|| inspect_android_bytecode(bytes))
         .or_else(|| inspect_nds(bytes))
         .or_else(|| inspect_archive(bytes))
         .or_else(|| inspect_vfs(bytes))
         .or_else(|| inspect_firmware(bytes))
         .unwrap_or(BinaryInspection::UNKNOWN)
+}
+
+fn inspect_android_bytecode(bytes: &[u8]) -> Option<BinaryInspection> {
+    let format = if matches!(bytes.get(..4), Some(b"dex\n" | b"cdex"))
+        && bytes.get(4..7)?.iter().all(u8::is_ascii_digit)
+        && bytes.get(7) == Some(&0)
+    {
+        BinaryFormat::Dex
+    } else if bytes.get(..4) == Some(b"oat\n")
+        && bytes.get(4..7)?.iter().all(u8::is_ascii_digit)
+        && bytes.get(7) == Some(&0)
+    {
+        BinaryFormat::Oat
+    } else if bytes.get(..4) == Some(b"art\n")
+        && bytes.get(4..7)?.iter().all(u8::is_ascii_digit)
+        && bytes.get(7) == Some(&0)
+    {
+        BinaryFormat::Art
+    } else {
+        return None;
+    };
+    Some(BinaryInspection::new(
+        format,
+        None,
+        Some(Endianness::Little),
+        None,
+    ))
 }
 
 fn inspect_pe(bytes: &[u8]) -> Option<BinaryInspection> {
@@ -232,7 +365,10 @@ fn inspect_archive(bytes: &[u8]) -> Option<BinaryInspection> {
         bytes.get(..4),
         Some(b"PK\x03\x04" | b"PK\x05\x06" | b"PK\x07\x08")
     ) {
-        BinaryFormat::Zip
+        let (format, architectures) = inspect_android_zip(bytes);
+        let mut result = BinaryInspection::new(format, architectures.single(), None, None);
+        result.android_abis = architectures;
+        return Some(result);
     } else if bytes.starts_with(b"\x1f\x8b\x08") {
         BinaryFormat::Gzip
     } else if bytes.starts_with(b"7z\xbc\xaf\x27\x1c") {
@@ -249,6 +385,139 @@ fn inspect_archive(bytes: &[u8]) -> Option<BinaryInspection> {
         return None;
     };
     Some(BinaryInspection::new(format, None, None, None))
+}
+
+const MAX_ZIP_SCAN_BYTES: usize = 8 * 1024 * 1024;
+const MAX_ZIP_ENTRIES: usize = 4096;
+const MAX_ZIP_NAME_BYTES: usize = 4096;
+
+fn inspect_android_zip(bytes: &[u8]) -> (BinaryFormat, ArchitectureSet) {
+    let scan = &bytes[..bytes.len().min(MAX_ZIP_SCAN_BYTES)];
+    let mut cursor = 0;
+    let mut entries = 0;
+    let mut manifest = false;
+    let mut dex = false;
+    let mut bundle_config = false;
+    let mut bundle_manifest = false;
+    let mut toc = false;
+    let mut nested_apk = false;
+    let mut apex_manifest = false;
+    let mut apex_payload = false;
+    let mut architectures = ArchitectureSet::default();
+
+    while entries < MAX_ZIP_ENTRIES && cursor + 4 <= scan.len() {
+        let Some(relative) = scan[cursor..]
+            .windows(4)
+            .position(|window| window == b"PK\x03\x04" || window == b"PK\x01\x02")
+        else {
+            break;
+        };
+        cursor += relative;
+        let central = scan.get(cursor..cursor + 4) == Some(b"PK\x01\x02");
+        let fixed = if central { 46 } else { 30 };
+        let name_offset = if central { 28 } else { 26 };
+        let Some(name_len) = read_u16(scan, cursor + name_offset, Endianness::Little) else {
+            break;
+        };
+        let name_len = usize::from(name_len);
+        if name_len > MAX_ZIP_NAME_BYTES {
+            cursor += 4;
+            continue;
+        }
+        let Some(name_start) = cursor.checked_add(fixed) else {
+            break;
+        };
+        let Some(name_end) = name_start.checked_add(name_len) else {
+            break;
+        };
+        let Some(name) = scan.get(name_start..name_end) else {
+            break;
+        };
+        classify_android_entry(
+            name,
+            &mut manifest,
+            &mut dex,
+            &mut bundle_config,
+            &mut bundle_manifest,
+            &mut toc,
+            &mut nested_apk,
+            &mut apex_manifest,
+            &mut apex_payload,
+            &mut architectures,
+        );
+        entries += 1;
+        cursor = name_end;
+    }
+
+    let format = if apex_manifest && apex_payload {
+        BinaryFormat::AndroidApex
+    } else if toc && nested_apk {
+        BinaryFormat::AndroidApks
+    } else if bundle_config && bundle_manifest {
+        BinaryFormat::AndroidAppBundle
+    } else if manifest && dex {
+        BinaryFormat::AndroidApk
+    } else {
+        BinaryFormat::Zip
+    };
+    (format, architectures)
+}
+
+#[allow(clippy::too_many_arguments)]
+fn classify_android_entry(
+    name: &[u8],
+    manifest: &mut bool,
+    dex: &mut bool,
+    bundle_config: &mut bool,
+    bundle_manifest: &mut bool,
+    toc: &mut bool,
+    nested_apk: &mut bool,
+    apex_manifest: &mut bool,
+    apex_payload: &mut bool,
+    architectures: &mut ArchitectureSet,
+) {
+    *manifest |= name == b"AndroidManifest.xml";
+    *dex |= is_classes_dex(name);
+    *bundle_config |= name == b"BundleConfig.pb";
+    *bundle_manifest |= name == b"base/manifest/AndroidManifest.xml";
+    *toc |= name == b"toc.pb";
+    *nested_apk |= name.ends_with(b".apk");
+    *apex_manifest |= name == b"apex_manifest.pb" || name == b"apex_manifest.json";
+    *apex_payload |= name == b"apex_payload.img";
+
+    let mut segments = name.split(|byte| *byte == b'/');
+    let mut previous = segments.next();
+    let mut abi = None;
+    for segment in segments {
+        if previous == Some(b"lib") {
+            abi = Some(segment);
+            break;
+        }
+        previous = Some(segment);
+    }
+    let Some(abi) = abi else {
+        return;
+    };
+    let architecture = match abi {
+        b"x86" => Some(Architecture::X86),
+        b"x86_64" => Some(Architecture::X86_64),
+        b"armeabi" | b"armeabi-v7a" => Some(Architecture::Arm),
+        b"arm64-v8a" => Some(Architecture::Aarch64),
+        b"riscv64" => Some(Architecture::RiscV64),
+        _ => None,
+    };
+    if let Some(architecture) = architecture {
+        architectures.insert(architecture);
+    }
+}
+
+fn is_classes_dex(name: &[u8]) -> bool {
+    let file = name.rsplit(|byte| *byte == b'/').next().unwrap_or(name);
+    file == b"classes.dex"
+        || file
+            .strip_prefix(b"classes")
+            .and_then(|value| value.strip_suffix(b".dex"))
+            .is_some_and(|number| !number.is_empty() && number.iter().all(u8::is_ascii_digit))
 }
 
 fn inspect_vfs(bytes: &[u8]) -> Option<BinaryInspection> {
