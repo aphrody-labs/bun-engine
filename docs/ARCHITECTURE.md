@@ -11,6 +11,10 @@
    Nintendo DS, archive, virtual-filesystem and firmware headers. Identification
    reports architecture and endianness when the format defines them; decoding,
    mounting, execution and conversion delegate to their unified owners.
+8. Reverse engineering: `bun:windows.pe` performs bounded Windows inspection,
+   `crates/ghidra-decompiler` owns native decompilation, and the pinned Ghidra plus
+   NTRGhidra sources own full analysis and Nintendo loaders. See
+   [GHIDRA-PLUGIN-SUITE.md](GHIDRA-PLUGIN-SUITE.md).
 
 Physics, animation, audio, networking, scripting, streaming and authoring share
 the same distribution contract and may load lazily through their owners.
