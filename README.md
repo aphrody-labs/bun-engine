@@ -4,6 +4,11 @@ A Rust-first, Bun-operated cross-OS game engine. The native kernel stays small;
 Bevy ECS, wgpu rendering and winit platform integration are opt-in. Bun owns
 asset tooling, automation, packaging and compatibility orchestration.
 
+Its universal porting pipeline classifies executables, bytecode, ROMs, archives,
+VFS images and firmware, then selects native rebuild, translation, emulation,
+compatibility or packaging. Targets are PE, ELF, WebAssembly/WASI and Android
+APK through optional owners; see `docs/UNIVERSAL-PORTING.md`.
+
 The first vertical slice includes Steam/Linux qualification through the local
 Proton, Wine, DXVK, vkd3d-proton, gamescope and Linux source forks. It probes
 Steam, Vulkan, kernel and user namespaces and records per-game support.
