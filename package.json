@@ -7,8 +7,11 @@
     "bep": "./packages/bun-engine/src/bep.ts",
     "bun-engine": "./packages/bun-engine/src/cli.ts"
   },
+  "workspaces": [
+    "packages/*",
+    "web/*"
+  ],
   "type": "module",
-  "workspaces": ["packages/*", "web/*"],
   "scripts": {
     "build": "bun run ./packages/bun-engine/src/cli.ts build",
     "compile": "bun run ./packages/bun-engine/src/cli.ts compile",
@@ -19,6 +22,7 @@
     "ml:setup": "bun run ./packages/bun-engine/src/cli.ts ml:setup",
     "ml:identify": "bun run ./packages/bun-engine/src/cli.ts ml:identify",
     "skills": "bun run ./packages/bun-engine/src/cli.ts skills",
+    "references": "bun run ./packages/bun-engine/src/cli.ts references",
     "ghidra:probe": "bun run ./packages/bun-engine/src/cli.ts ghidra:probe",
     "ghidra:build": "bun run ./packages/bun-engine/src/cli.ts ghidra:build",
     "web": "bun run ./packages/bun-engine/src/cli.ts web",
