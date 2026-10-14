@@ -22,8 +22,9 @@ that the payload can already be decoded, rebuilt or executed.
 - `bun:dotnet` owns managed hosting. JNI/Ghidra uses the unified out-of-process analysis owner.
 - Bevy ECS, wgpu and winit are required and pinned to the Aphrody forks.
 - Console emulators are unified GPL owners with isolated linkage boundaries.
-- The [Ghidra plugin suite](GHIDRA-PLUGIN-SUITE.md) owns reverse engineering:
-  native PE inspection, Rust decompilation, full Ghidra analysis and NTR loading.
+- The [Ghidra AI plugin suite](GHIDRA-PLUGIN-SUITE.md) owns reverse engineering:
+  private Codex orchestration over native PE inspection, Rust decompilation, full
+  Ghidra analysis and NTR loading.
 
 ## Non-goals
 
