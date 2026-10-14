@@ -1,0 +1,20 @@
+[workspace]
+resolver = "3"
+members = [
+  "aphrody-aarch64",
+  "aphrody-switch",
+  "aphrody-wii",
+  "aphrody-wii-image",
+]
+
+[workspace.package]
+edition = "2024"
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+
+[workspace.dependencies]
+tracing = "0.1"
+zerocopy = "0.8"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
