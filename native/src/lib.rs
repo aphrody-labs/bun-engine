@@ -1,5 +1,7 @@
 #![forbid(unsafe_code)]
 
+pub mod binary;
+
 use std::time::Duration;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -38,12 +40,20 @@ pub struct Engine {
 
 impl Engine {
     pub fn new(config: EngineConfig) -> Self {
-        Self { config, context: EngineContext::default(), plugins: Vec::new(), started: false }
+        Self {
+            config,
+            context: EngineContext::default(),
+            plugins: Vec::new(),
+            started: false,
+        }
     }
 
     pub fn add_plugin(&mut self, plugin: impl Plugin + 'static) {
         assert!(!self.started, "plugins must be registered before startup");
-        assert!(self.plugins.iter().all(|item| item.name() != plugin.name()), "plugin names must be unique");
+        assert!(
+            self.plugins.iter().all(|item| item.name() != plugin.name()),
+            "plugin names must be unique"
+        );
         self.plugins.push(Box::new(plugin));
     }
 
