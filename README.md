@@ -25,6 +25,8 @@ Commands:
 
 - 'bun run probe'
 - 'bun run compile' emits the optimized single-file executable.
+- 'bun run ml:setup' and 'bun run ml:identify -- <path>' enable optional Magika classification.
+- 'bep install', 'bep add' and 'bep pm' expose Bun Engine Packages.
 - 'bun run qualify:fc27'
 - 'bun run ./src/cli.ts launch <appid>'
 - 'bun run ./src/cli.ts trace <appid>' enables Proton logging for reproduction.

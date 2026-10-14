@@ -2,4 +2,5 @@
 /target/
 /native/target/
 /node_modules/
+__pycache__/
 *.pdb

@@ -17,6 +17,7 @@
     "src/drivers/**",
     "src/gpu/**",
     "src/kernel/**",
+    "src/ml/magika/**",
     "src/runtime/bun/**",
     "toolchains/**"
   ]

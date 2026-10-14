@@ -101,3 +101,6 @@
 [submodule "toolchains/make"]
 	path = toolchains/make
 	url = https://github.com/mirror/make.git
+[submodule "src/ml/magika"]
+	path = src/ml/magika
+	url = https://github.com/aphrody-labs/magika.git

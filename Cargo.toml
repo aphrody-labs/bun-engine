@@ -7,7 +7,13 @@ members = [
   "crates/aphrody-wii",
   "crates/aphrody-wii-image",
 ]
-exclude = ["crates/bevy", "crates/wgpu", "crates/winit", "plugins/emulation/rust/*"]
+exclude = [
+  "crates/bevy",
+  "crates/wgpu",
+  "crates/winit",
+  "plugins/emulation/rust/*",
+  "src/ml/magika",
+]
 default-members = ["crates/bun-engine-core"]
 
 [workspace.package]

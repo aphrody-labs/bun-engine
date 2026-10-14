@@ -78,6 +78,26 @@ export async function compileWorkspace(options: CompileWorkspaceOptions = {}): P
   return 0;
 }
 
+export async function compilePackageManager(
+  outfile = join("build", "bin", "bep.exe"),
+): Promise<number> {
+  const output = join(root, outfile);
+  await Bun.$`mkdir -p ${dirname(output)}`.quiet();
+  const result = await Bun.build({
+    entrypoints: [join(root, "src", "bep.ts")],
+    compile: { outfile: output, autoloadDotenv: false, autoloadBunfig: false },
+    bytecode: true,
+    minify: true,
+    sourcemap: "linked",
+  });
+  if (!result.success) {
+    for (const log of result.logs) console.error(log);
+    return 1;
+  }
+  console.log(result.outputs[0]?.path ?? output);
+  return 0;
+}
+
 export async function serveWorkspace(): Promise<never> {
   const port = Number.parseInt(Bun.env.BUN_ENGINE_WEB_PORT ?? "50080", 10);
   const hostname = Bun.env.BUN_ENGINE_WEB_HOST ?? "127.0.0.1";

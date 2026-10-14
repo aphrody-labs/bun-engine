@@ -1,10 +1,12 @@
 {
   "schema": 1,
   "cli": "src/cli.ts",
+  "packageManager": "src/bep.ts",
   "ffi": "include/bun_engine.h",
   "web": "apps/web/index.html",
   "consolePlugins": "src/plugins/consoles.ts",
   "formatLoaders": "src/plugins/formats.ts",
+  "ml": "src/ml/magika",
   "cargoWorkspace": "Cargo.toml",
   "bunWorkspace": "package.json",
   "cmakeWorkspace": "CMakeLists.txt",
@@ -16,6 +18,7 @@
     "cuda": ["src/gpu/cuda/cccl", "src/gpu/cuda/samples"],
     "directx12": ["src/gpu/directx/headers", "src/gpu/directx/compiler", "src/gpu/directx/samples"],
     "render": ["crates/wgpu", "crates/bevy", "crates/winit"],
+    "fileTypeMl": "src/ml/magika",
     "toolchains": [
       "toolchains/llvm",
       "toolchains/qemu",
