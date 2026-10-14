@@ -21,6 +21,7 @@
     "windowsCompatibility": ["src/compat/proton", "src/compat/wine"],
     "hardwareDetection": "src/platform/chwd",
     "linuxPackageBuilds": "src/platform/pkg-manage-util",
+    "steamOsNvidiaInstaller": "src/platform/steamos-nvidia-installer",
     "cachyosDocumentation": "docs/vendor/cachyos",
     "nvidia": "src/drivers/nvidia-open",
     "cuda": ["src/gpu/cuda/cccl", "src/gpu/cuda/samples"],

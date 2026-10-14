@@ -94,6 +94,10 @@
 	url = https://github.com/aphrody-labs/pkg-manage-util.git
 	branch = develop
 	shallow = true
+[submodule "src/platform/steamos-nvidia-installer"]
+	path = src/platform/steamos-nvidia-installer
+	url = https://github.com/aphrody-labs/steamos-nvidia-installer.git
+	shallow = true
 [submodule "src/drivers/nvidia-open"]
 	path = src/drivers/nvidia-open
 	url = https://github.com/aphrody-labs/open-gpu-kernel-modules.git
