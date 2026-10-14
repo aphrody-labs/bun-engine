@@ -5,3 +5,5 @@
 **/node_modules/
 __pycache__/
 *.pdb
+/firmware/
+/fixtures/firmware/

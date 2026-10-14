@@ -1,4 +1,5 @@
 import { fetchFirmwareCatalog } from "./firmware/catalog";
+import { importFirmware } from "./firmware/import";
 
 const packageManagerCommands = new Set([
   "add",
@@ -28,6 +29,17 @@ export function packageManagerInvocation(args: string[]): string[] {
 export async function runEnginePackageManager(args: string[]): Promise<number> {
   if (args[0] === "firmware:index") {
     console.log(JSON.stringify(await fetchFirmwareCatalog(), null, 2));
+    return 0;
+  }
+  if (args[0] === "firmware:import") {
+    const [, consoleName, sourcePath, ...options] = args;
+    if (!consoleName || !sourcePath) {
+      throw new Error("usage: bep firmware:import <console> <local-dump> [--store <directory>]");
+    }
+    const storeAt = options.indexOf("--store");
+    const store = storeAt >= 0 ? options[storeAt + 1] : undefined;
+    if (storeAt >= 0 && !store) throw new Error("--store requires a directory");
+    console.log(JSON.stringify(await importFirmware(consoleName, sourcePath, store), null, 2));
     return 0;
   }
   const invocation = packageManagerInvocation(args);

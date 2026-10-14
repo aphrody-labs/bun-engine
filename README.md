@@ -55,3 +55,13 @@ Commands:
 Jev may select one of the read-only actions in 'packages/bun-engine/src/jev-agent.ts'. It cannot
 expand that allowlist or authorize installation, publication, DRM bypass or
 anti-cheat bypass.
+
+### Local firmware proof of concept
+
+Import a dump made from hardware you own into the protected store outside the repository:
+
+```powershell
+bun run bep firmware:import nintendo-ds C:\path\to\your\bios.bin
+```
+
+Set `BUN_ENGINE_FIRMWARE_STORE` to override the default per-user store. Imports are content-addressed by SHA-256 and accompanied by a JSON manifest; firmware payloads and fixtures are ignored by Git.
