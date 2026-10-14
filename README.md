@@ -69,3 +69,5 @@ Set `BUN_ENGINE_FIRMWARE_STORE` to override the default per-user store. Imports 
 ### Native capability probes
 
 `bep system:probe [host]` exercises Bun DNS, TCP/TLS, Image, Video, Win32 or Linux kernel APIs and discovers WinGet. `bep media:probe <file>` reads real image/video metadata through `Bun.Image` or `Bun.Video`.
+
+`bep ds:load [directory]` validates and loads owner-supplied DS ARM7/ARM9 BIOS, SPI firmware and GBA BIOS dumps. The default directory is `./bin`; payload bytes never enter the JSON output or Git.

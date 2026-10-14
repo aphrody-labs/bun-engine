@@ -1,6 +1,7 @@
 import { fetchFirmwareCatalog } from "./firmware/catalog";
 import { importFirmware } from "./firmware/import";
 import { probeMedia, probeNativeCapabilities } from "./native-capabilities";
+import { NintendoDsFirmware } from "./nds/loader";
 
 const packageManagerCommands = new Set([
   "add",
@@ -35,6 +36,16 @@ export async function runEnginePackageManager(args: string[]): Promise<number> {
   if (args[0] === "media:probe") {
     if (!args[1]) throw new Error("usage: bep media:probe <local-file>");
     console.log(JSON.stringify(await probeMedia(args[1]), null, 2));
+    return 0;
+  }
+  if (args[0] === "ds:load") {
+    const directory = args[1] ?? `${process.cwd()}/bin`;
+    const firmware = await NintendoDsFirmware.load(directory);
+    firmware.readArm7(0, 4);
+    firmware.readArm9(0xffff0000, 4);
+    firmware.readFirmwareSpi(0, 4);
+    firmware.readGbaBios(0, 4);
+    console.log(JSON.stringify(firmware.summary(), null, 2));
     return 0;
   }
   if (args[0] === "firmware:index") {
