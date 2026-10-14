@@ -10,7 +10,7 @@ Pinned source owners:
 - `src/gpu/directx/headers`: DirectX ABI headers.
 - `src/gpu/directx/compiler`: DXC/HLSL compiler.
 - `src/gpu/directx/samples`: executable D3D12 reference code.
-- `src/drivers/nvidia-open`: NVIDIA's open Linux kernel modules.
+- `src/drivers/nvidia-open`: CachyOS fork of NVIDIA's open Linux kernel modules.
 - `src/gpu/cuda/cccl`: CUDA C++ core libraries.
 - `src/gpu/cuda/samples`: CUDA runtime and driver API examples.
 - `src/runtime/bun`: Bun GPU, Buv, PyJS, Python/PyCUDA and FFI owners.

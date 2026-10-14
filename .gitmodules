@@ -80,9 +80,25 @@
 	url = https://github.com/aphrody-labs/wine-cachyos.git
 	branch = proton_9.0
 	shallow = true
+[submodule "docs/vendor/cachyos"]
+	path = docs/vendor/cachyos
+	url = https://github.com/aphrody-labs/wiki.git
+	branch = next
+	shallow = true
+[submodule "src/platform/chwd"]
+	path = src/platform/chwd
+	url = https://github.com/aphrody-labs/chwd.git
+	shallow = true
+[submodule "src/platform/pkg-manage-util"]
+	path = src/platform/pkg-manage-util
+	url = https://github.com/aphrody-labs/pkg-manage-util.git
+	branch = develop
+	shallow = true
 [submodule "src/drivers/nvidia-open"]
 	path = src/drivers/nvidia-open
-	url = https://github.com/NVIDIA/open-gpu-kernel-modules.git
+	url = https://github.com/aphrody-labs/open-gpu-kernel-modules.git
+	branch = 560-cachyos
+	shallow = true
 [submodule "src/gpu/cuda/cccl"]
 	path = src/gpu/cuda/cccl
 	url = https://github.com/NVIDIA/cccl.git
