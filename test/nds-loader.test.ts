@@ -1,12 +1,17 @@
 import { describe, expect, test } from "bun:test";
-import { mkdir, mkdtemp, rm } from "node:fs/promises";
+import { mkdtemp, rm } from "node:fs/promises";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { NintendoDsFirmware } from "../packages/bun-engine/src/nds/loader";
 
-async function fixture(path: string, bytes: number, seed: number): Promise<void> {
+async function fixture(
+  path: string,
+  bytes: number,
+  seed: number,
+): Promise<void> {
   const data = new Uint8Array(bytes);
-  for (let index = 0; index < data.length; index++) data[index] = (index + seed) & 0xff;
+  for (let index = 0; index < data.length; index++)
+    data[index] = (index + seed) & 0xff;
   await Bun.write(path, data);
 }
 
@@ -22,8 +27,12 @@ describe("Nintendo DS firmware loader", () => {
       ]);
       const loader = await NintendoDsFirmware.load(root);
       expect(loader.readArm7(0, 4)).toEqual(new Uint8Array([7, 8, 9, 10]));
-      expect(loader.readArm9(0xffff0000, 4)).toEqual(new Uint8Array([9, 10, 11, 12]));
-      expect(loader.readFirmwareSpi(4, 3)).toEqual(new Uint8Array([15, 16, 17]));
+      expect(loader.readArm9(0xffff0000, 4)).toEqual(
+        new Uint8Array([9, 10, 11, 12]),
+      );
+      expect(loader.readFirmwareSpi(4, 3)).toEqual(
+        new Uint8Array([15, 16, 17]),
+      );
       expect(loader.readGbaBios(0, 2)).toEqual(new Uint8Array([13, 14]));
       expect(() => loader.readArm9(0, 4)).toThrow(RangeError);
     } finally {

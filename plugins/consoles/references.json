@@ -32,11 +32,12 @@
       "localPath": "crates/ctru-rs"
     },
     {
-      "id": "citra",
-      "name": "Citra",
+      "id": "azahar",
+      "name": "Azahar",
       "category": "3ds-reference",
-      "url": "https://github.com/citra-emu/citra",
-      "role": "Historical 3DS HLE reference"
+      "url": "https://github.com/azahar-emu/azahar",
+      "role": "Active Citra-derived 3DS HLE reference",
+      "localPath": "crates/azahar"
     },
     {
       "id": "3dmoo",
@@ -56,7 +57,7 @@
       "id": "dynarmic",
       "name": "Dynarmic",
       "category": "sister-project",
-      "url": "https://github.com/merryhime/dynarmic",
+      "url": "https://github.com/azahar-emu/dynarmic",
       "role": "ARM32 and ARM64 dynamic recompiler"
     },
     {
@@ -121,7 +122,7 @@
       "id": "kaizen",
       "name": "Kaizen",
       "category": "sister-project",
-      "url": "https://github.com/SimoneN64/Kaizen",
+      "url": "https://github.com/mehmetpeker1/Kaizen",
       "role": "Experimental low-level Nintendo 64 emulator"
     },
     {
