@@ -1,4 +1,5 @@
 {
+  "files": ["src/runtime/bun/packages/bun-types/windows.d.ts"],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "target": "ESNext",

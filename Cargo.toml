@@ -2,6 +2,7 @@
 resolver = "3"
 members = [
   "crates/bun-engine-core",
+  "crates/ghidra-decompiler",
   "crates/aphrody-aarch64",
   "crates/aphrody-switch",
   "crates/aphrody-wii",
@@ -36,5 +37,6 @@ wgpu = { path = "crates/wgpu/wgpu", default-features = false, features = [
 ] }
 winit = { path = "crates/winit/winit", default-features = false }
 tracing = "0.1"
+ghidra-decompiler = { path = "crates/ghidra-decompiler" }
 zerocopy = "0.8"
 zip = { version = "2", default-features = false, features = ["deflate"] }

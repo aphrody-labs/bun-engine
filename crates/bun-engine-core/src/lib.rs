@@ -2,6 +2,7 @@
 
 pub mod binary;
 pub mod ffi;
+pub mod reverse;
 
 use std::time::Duration;
 

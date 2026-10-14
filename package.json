@@ -18,6 +18,8 @@
     "ml:setup": "bun run ./src/cli.ts ml:setup",
     "ml:identify": "bun run ./src/cli.ts ml:identify",
     "skills": "bun run ./src/cli.ts skills",
+    "ghidra:probe": "bun run ./src/cli.ts ghidra:probe",
+    "ghidra:build": "bun run ./src/cli.ts ghidra:build",
     "web": "bun run ./src/cli.ts web",
     "probe": "bun run ./src/cli.ts probe",
     "qualify:fc27": "bun run ./src/cli.ts qualify 4080220",

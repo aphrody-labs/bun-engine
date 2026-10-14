@@ -10,6 +10,7 @@
   "ml": "src/ml/magika",
   "skills": "src/core/replica",
   "replicaPipeline": "src/pipeline/replica.ts",
+  "reverseEngineeringPipeline": "src/pipeline/reverse.ts",
   "cargoWorkspace": "Cargo.toml",
   "bunWorkspace": "package.json",
   "cmakeWorkspace": "CMakeLists.txt",
@@ -23,6 +24,11 @@
     "render": ["crates/wgpu", "crates/bevy", "crates/winit"],
     "fileTypeMl": "src/ml/magika",
     "replicaSkills": "src/core/replica",
+    "reverseEngineering": [
+      "src/re/ghidra",
+      "crates/ghidra-decompiler",
+      "src/re/extensions/ntr-ghidra"
+    ],
     "toolchains": [
       "toolchains/llvm",
       "toolchains/qemu",

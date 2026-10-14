@@ -104,3 +104,15 @@
 [submodule "src/ml/magika"]
 	path = src/ml/magika
 	url = https://github.com/aphrody-labs/magika.git
+[submodule "src/re/ghidra"]
+	path = src/re/ghidra
+	url = https://github.com/aphrody-labs/ghidra.git
+	shallow = true
+[submodule "crates/ghidra-decompiler"]
+	path = crates/ghidra-decompiler
+	url = https://github.com/aphrody-labs/ghidra-decompiler.git
+	shallow = true
+[submodule "src/re/extensions/ntr-ghidra"]
+	path = src/re/extensions/ntr-ghidra
+	url = https://github.com/aphrody-labs/NTRGhidra.git
+	shallow = true

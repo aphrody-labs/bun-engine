@@ -14,6 +14,7 @@ bevy_app.workspace = true
 bevy_ecs.workspace = true
 wgpu.workspace = true
 winit.workspace = true
+ghidra-decompiler.workspace = true
 
 [[bin]]
 name = "bun-engine-editor"
