@@ -22,6 +22,8 @@ The first vertical slice uses the pinned CachyOS suite: `linux-cachyos`, its
 kernel patch set, `proton-cachyos` and `wine-cachyos`. Proton owns Steam Play,
 DXVK and vkd3d-proton composition; the launcher probes Steam, Vulkan, kernel and
 user namespaces and records per-game support. See `docs/CACHYOS-SUITE.md`.
+Dedicated-server and SteamPipe provisioning use the pinned SteamCMD container
+owner described in `docs/STEAM-PLATFORM.md`.
 
 EA SPORTS FC 27 is currently recorded as experimental. The project qualifies
 its Windows publisher services, DirectX 12 path, Steam session and multiplayer

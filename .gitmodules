@@ -98,6 +98,10 @@
 	path = src/platform/steamos-nvidia-installer
 	url = https://github.com/aphrody-labs/steamos-nvidia-installer.git
 	shallow = true
+[submodule "src/platform/steamcmd"]
+	path = src/platform/steamcmd
+	url = https://github.com/aphrody-labs/steamcmd.git
+	shallow = true
 [submodule "src/drivers/nvidia-open"]
 	path = src/drivers/nvidia-open
 	url = https://github.com/aphrody-labs/open-gpu-kernel-modules.git

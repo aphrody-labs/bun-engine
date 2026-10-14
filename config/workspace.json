@@ -22,6 +22,7 @@
     "hardwareDetection": "src/platform/chwd",
     "linuxPackageBuilds": "src/platform/pkg-manage-util",
     "steamOsNvidiaInstaller": "src/platform/steamos-nvidia-installer",
+    "steamCmdContainer": "src/platform/steamcmd",
     "cachyosDocumentation": "docs/vendor/cachyos",
     "nvidia": "src/drivers/nvidia-open",
     "cuda": ["src/gpu/cuda/cccl", "src/gpu/cuda/samples"],
