@@ -1,3 +1,30 @@
 [submodule "plugins/android"]
 	path = plugins/android
 	url = https://github.com/aphrody-labs/bun-engine-android.git
+[submodule "src/console/vendor/libnds"]
+	path = src/console/vendor/libnds
+	url = https://github.com/devkitPro/libnds.git
+[submodule "src/console/vendor/libogc"]
+	path = src/console/vendor/libogc
+	url = https://github.com/devkitPro/libogc.git
+[submodule "src/console/vendor/melonds"]
+	path = src/console/vendor/melonds
+	url = https://github.com/melonDS-emu/melonDS.git
+[submodule "src/console/vendor/open-agb-firm"]
+	path = src/console/vendor/open-agb-firm
+	url = https://github.com/profi200/open_agb_firm.git
+[submodule "src/console/vendor/dolphin"]
+	path = src/console/vendor/dolphin
+	url = https://github.com/dolphin-emu/dolphin.git
+[submodule "src/console/vendor/azahar"]
+	path = src/console/vendor/azahar
+	url = https://github.com/azahar-emu/azahar.git
+[submodule "src/console/vendor/retroarch"]
+	path = src/console/vendor/retroarch
+	url = https://github.com/libretro/RetroArch.git
+[submodule "src/console/vendor/mame"]
+	path = src/console/vendor/mame
+	url = https://github.com/mamedev/mame.git
+[submodule "src/console/vendor/ares"]
+	path = src/console/vendor/ares
+	url = https://github.com/ares-emulator/ares.git
