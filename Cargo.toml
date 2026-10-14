@@ -2,6 +2,7 @@
 resolver = "3"
 members = [
   "crates/bun-engine-core",
+  "crates/nds",
   "crates/ghidra-decompiler",
   "crates/aphrody-aarch64",
   "crates/aphrody-switch",

@@ -31,6 +31,7 @@
     "android:test": "bun test ./packages/android-pipeline/tests",
     "console:manifest": "bun test ./test/console-catalog.test.ts",
     "native:test": "bun ./crates/bun-runtime/scripts/build/rust/cargo-serial.ts --msvc test --workspace",
+    "nds:tinke:build": "bun dotnet publish ./crates/nds/dotnet/BunEngine.Nds.Tinke.csproj -c Release -r win-x64 --self-contained -o ./build/nds/tinke -p:PublishAot=true",
     "console:validate": "bun run ./packages/bun-engine/src/console/validate.ts"
   },
   "dependencies": {
