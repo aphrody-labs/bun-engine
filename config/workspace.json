@@ -22,6 +22,7 @@
     "windowsOmarchy": "crates/omarchy-windows",
     "hardwareDetection": "crates/chwd",
     "linuxPackageBuilds": "crates/pkg-manage-util",
+    "linuxRepositoryManagement": "crates/repo-manage-util",
     "steamOsNvidiaInstaller": "crates/steamos-nvidia-installer",
     "steamCmdContainer": "crates/steamcmd",
     "steamCmdApi": "crates/steamcmd-api",

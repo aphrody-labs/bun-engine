@@ -30,6 +30,9 @@ CMake project and one vcpkg manifest. `crates/bun-runtime` owns Bun, Buv, PyJS,
 Python, CUDA bindings and the shared runtime FFI. Linux/NVIDIA/CUDA/DirectX
 sources are pinned under `crates/`; LLVM, QEMU, CMake, vcpkg and Make are pinned
 under `toolchains/`. They are required distribution owners with scoped builds.
+`crates/pkg-manage-util` owns CachyOS package builds and
+`crates/repo-manage-util` is a direct member of the root Cargo workspace for
+repository reset, update, synchronization and package movement.
 
 Console runtimes, CPU implementations and free native SDK source trees are
 unified catalog entries described in [CONSOLE-PLUGINS.md](CONSOLE-PLUGINS.md).

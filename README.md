@@ -32,6 +32,9 @@ The Windows desktop path pins the Aphrody fork of Try Omarchy under
 `TRYOMARCHY_MSYS2_ROOT` and keeps WHPX, guest images and runtime supervision in
 the same Bun Engine distribution.
 
+The pacman pipeline pins both CachyOS owners: `crates/pkg-manage-util` builds
+packages and `crates/repo-manage-util` manages and synchronizes repositories.
+
 EA SPORTS FC 27 is currently recorded as experimental. The project qualifies
 its Windows publisher services, DirectX 12 path, Steam session and multiplayer
 startup end to end without disabling required game components.
@@ -44,6 +47,7 @@ Commands:
 - 'bun run skills' lists the embedded Replica workflow; 'bun run ./packages/bun-engine/src/cli.ts skill recon' prints one skill and 'bun run ./packages/bun-engine/src/cli.ts pipeline replica' exposes its ordered artifact pipeline.
 - 'bun run ghidra:probe' qualifies Ghidra, NTRGhidra, Java and the native Windows toolchain through 'bun:windows'; 'ghidra:inspect <pe>' uses the native PE parser before analysis.
 - 'bep install', 'bep add' and 'bep pm' expose Bun Engine Packages.
+- 'bep firmware:index' reads bounded public firmware metadata through native Bun fetch without downloading payload archives.
 - 'bun run qualify:fc27'
 - 'bun run ./packages/bun-engine/src/cli.ts launch <appid>'
 - 'bun run ./packages/bun-engine/src/cli.ts trace <appid>' enables Proton logging for reproduction.

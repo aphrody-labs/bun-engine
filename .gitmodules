@@ -159,3 +159,7 @@
 [submodule "crates/omarchy-windows"]
 	path = crates/omarchy-windows
 	url = https://github.com/aphrody-labs/try-omarchy-windows.git
+[submodule "crates/repo-manage-util"]
+	path = crates/repo-manage-util
+	url = https://github.com/aphrody-labs/repo-manage-util.git
+	branch = develop

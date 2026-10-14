@@ -1,3 +1,5 @@
+import { fetchFirmwareCatalog } from "./firmware/catalog";
+
 const packageManagerCommands = new Set([
   "add",
   "install",
@@ -24,6 +26,10 @@ export function packageManagerInvocation(args: string[]): string[] {
 }
 
 export async function runEnginePackageManager(args: string[]): Promise<number> {
+  if (args[0] === "firmware:index") {
+    console.log(JSON.stringify(await fetchFirmwareCatalog(), null, 2));
+    return 0;
+  }
   const invocation = packageManagerInvocation(args);
   const child = Bun.spawn([process.execPath, ...invocation], {
     cwd: process.cwd(),

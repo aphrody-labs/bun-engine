@@ -8,6 +8,7 @@ members = [
   "crates/aphrody-wii",
   "crates/aphrody-wii-image",
   "crates/android-native",
+  "crates/repo-manage-util",
 ]
 exclude = [
   "crates/bevy",
