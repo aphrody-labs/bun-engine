@@ -25,6 +25,16 @@ async function resolveJava(): Promise<string | null> {
   return (await candidates).sort().at(-1) ?? null;
 }
 
+async function hasMsvcAtl(): Promise<boolean> {
+  const visualStudio = "C:\\Program Files (x86)\\Microsoft Visual Studio";
+  for await (const _ of new Bun.Glob(
+    "*/BuildTools/VC/Tools/MSVC/*/atlmfc/include/atlcomcli.h",
+  ).scan({ cwd: visualStudio })) {
+    return true;
+  }
+  return false;
+}
+
 export async function probeGhidraWindows() {
   requireWindows();
   const toolchain = windows.toolchain();
@@ -102,13 +112,21 @@ export async function buildGhidraWindows(): Promise<number> {
       .catch(() => false);
     if (!flatRepoReady) {
       const fetched = await run([
+        "-DhideDownloadProgress=true",
         "-I",
         "gradle/support/fetchDependencies.gradle",
         "init",
       ]);
       if (fetched !== 0) return fetched;
     }
-    return await run(["buildGhidra"]);
+    const args = ["buildGhidra"];
+    if (!(await hasMsvcAtl())) {
+      console.warn(
+        "MSVC ATL is unavailable; building Ghidra without the optional native PDB helper",
+      );
+      args.push("-x", ":PDB:win_x86_64PDBMake");
+    }
+    return await run(args);
   } finally {
     job.close();
   }
